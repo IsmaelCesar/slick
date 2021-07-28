@@ -37,6 +37,7 @@ config/database.yml
 /config/application.yml
 /config/secrets.yml
 /config/cable.yml
+bin/*
 
 /public/packs
 /public/packs-test
