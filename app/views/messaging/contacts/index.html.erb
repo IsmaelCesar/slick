@@ -1,0 +1,32 @@
+<div>
+  <h1>Welcome <%= @user.name %></h1>
+  <p>Your email is: <%= @user.email %></p>
+  <%= form_with model: @user, url:  logout_path do |f| %>
+    <div>
+      <%= f.button 'Logout'%>
+    </div>
+  <% end %>
+</div>
+
+<table border="1px">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !@user.contacts.empty? %>
+      <% @user.contacts.each do |contact|%>
+        <tr>
+          <td> <%= contact.name %> </td>
+          <td> <%= contact.email %> </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="1"> No contacts have been added </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

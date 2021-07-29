@@ -1,2 +1,22 @@
-<h1>Presentation::User#login</h1>
-<p>Find me in app/views/presentation/user/login.html.erb</p>
+<div>
+    <%= form_with model: @user, url: login_path do |f|%>
+        <div>
+          <div>
+              <%= f.label :email, 'Username'%>
+              <%= f.text_field :email, placeholder: 'user@email.com'%>
+          </div>
+          <div>
+              <%= f.label :password, 'Password'%>
+              <%= f.password_field :password, placeholder: 'Place your password here'%>
+          </div>
+        </div>
+        <div>
+          <%= f.button 'Cancel', type: 'reset' %>
+          <%= f.submit 'Login' %>
+        </div>
+        <div>
+            <%= f.button 'Sign up', id: 'sign-up' %>
+        </div>
+    <% end %>
+</div>
+<%= javascript_pack_tag 'presentation/user' %>

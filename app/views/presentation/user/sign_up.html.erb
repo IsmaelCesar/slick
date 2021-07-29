@@ -1,2 +1,28 @@
-<h1>Presentation::User#sign_up</h1>
-<p>Find me in app/views/presentation/user/sign_up.html.erb</p>
+<div>
+  <h1>Sign up</h1>
+
+  <fieldset>
+    <%= form_with model: @user, url: presentation_user_sign_up_apply_path do |f| %>
+      <div>
+        <%= f.label :name, 'User name'%>
+        <%= f.text_field :name, placeholder: 'Your name', required: true%>
+      </div>
+      <div>
+        <%= f.label :email, 'E-mail'%>
+        <%= f.text_field :email, placeholder: 'user@email.com', required: true%>
+      </div>
+      <div>
+        <%= f.label :password, 'Password'%>
+        <%= f.password_field :password, placeholder: 'Your password', required: true%>
+      </div>
+      <div>
+        <%= f.label :password_confirmation, 'Confirm password'%>
+        <%= f.password_field :password_confirmation, placeholder: 'Your password again', required: true%>
+      </div>
+      <div>
+        <%= f.button 'Clear', type: :reset %>
+        <%= f.submit 'Sign up', id: 'sign-up-apply'%>
+      </div>
+    <% end %>
+  </fieldset>
+</div>
