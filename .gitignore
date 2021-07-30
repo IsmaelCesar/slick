@@ -34,9 +34,9 @@
 
 # Ignoring .yml files
 config/database.yml
-/config/application.yml
-/config/secrets.yml
-./config/cable.yml
+config/application.yml
+config/secrets.yml
+config/cable.yml
 bin/*
 
 /public/packs
@@ -45,4 +45,5 @@ bin/*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
 
