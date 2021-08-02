@@ -1,11 +1,10 @@
 <div>
   <h1>Welcome <%= @user.name %></h1>
   <p>Your email is: <%= @user.email %></p>
-  <%= form_with model: @user, url:  logout_path do |f| %>
-    <div>
-      <%= f.button 'Logout'%>
-    </div>
-  <% end %>
+  <%= form_with url: messaging_contacts_create_path, remote: true , id: 'form-actions' do |f|%>
+    <%= f.button 'Logout', id: 'btn-logout' %>
+    <%= f.button 'Add new contact', id: 'btn-add-new-contact' %>
+  <% end %>  
 </div>
 
 <table border="1px">
@@ -30,3 +29,4 @@
     <% end %>
   </tbody>
 </table>
+<%= javascript_pack_tag "messaging/contacts" %>

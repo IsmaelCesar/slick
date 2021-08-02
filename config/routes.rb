@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :messaging do
     get 'contacts/index'
+    post 'contacts/create'
   end
 
   root to: 'presentation/main#index'
