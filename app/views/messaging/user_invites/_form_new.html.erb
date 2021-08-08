@@ -1,0 +1,12 @@
+<%= form_with url: messaging_create_user_invite_path, method: :post, html: { 'data-remote': true } do |f| %>
+  <div>
+    <div>
+      <%= f.label :user_email, 'e-mail'%>
+      <%= f.email_field :user_email, placeholder: 'contact@email.com', id: 'user-email', required: true  %>
+    </div>
+    <div>
+      <%= f.submit 'Add', id: 'add-new-contact' %>
+      <%= f.button 'Cancel', type: :reset, id: 'cancel-new-invite'%>
+    </div>
+  </div>
+<% end %>

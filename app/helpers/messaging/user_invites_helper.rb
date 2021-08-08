@@ -1,0 +1,2 @@
+module Messaging::UserInvitesHelper
+end
