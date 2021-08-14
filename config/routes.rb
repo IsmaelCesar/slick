@@ -20,6 +20,15 @@ Rails.application.routes.draw do
 
   namespace :messaging do
     get 'contacts/index'
+    post 'contacts/create', as: :create_contact
+
+    # new_user_invites
+    get 'user_invites/new', as: :new_user_invite
+    get 'user_invites/list_received', as: :list_received_invites
+    get 'user_invites/list_pending', as: :list_pending_invites
+    post 'user_invites/create', as: :create_user_invite
+    put 'user_invites/accept/:id', to: 'user_invites#accept', as: :accept_invite
+    delete 'user_invites/decline/:id', to: 'user_invites#decline', as: :decline_invite
   end
 
   root to: 'presentation/main#index'

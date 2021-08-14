@@ -1,32 +1,17 @@
-<div>
-  <h1>Welcome <%= @user.name %></h1>
-  <p>Your email is: <%= @user.email %></p>
-  <%= form_with model: @user, url:  logout_path do |f| %>
-    <div>
-      <%= f.button 'Logout'%>
-    </div>
-  <% end %>
-</div>
-
-<table border="1px">
-  <thead>
-    <tr>
-      <th> Name </th>
-      <th> Email </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if !@user.contacts.empty? %>
-      <% @user.contacts.each do |contact|%>
-        <tr>
-          <td> <%= contact.name %> </td>
-          <td> <%= contact.email %> </td>
-        </tr>
-      <% end %>
-    <% else %>
-      <tr>
-        <td colspan="1"> No contacts have been added </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section id="user-action">
+  <div>
+    <h1>Welcome <%= @user.name %></h1>
+    <p>Your email is: <%= @user.email %></p>
+    <%= link_to 'Logout', logout_path, id: 'btn-logout', remote: true, method: :patch %>
+    <%= link_to 'Make invite', messaging_new_user_invite_path,  id: 'btn-new-user-invite', remote: true %>
+    <%= link_to 'List contacts', messaging_contacts_index_path,  id: 'btn-received-invites', remote: true %>
+    <%= link_to 'Received invites', messaging_list_received_invites_path,  id: 'btn-received-invites', remote: true %>
+    <%= link_to 'Pending invites', messaging_list_pending_invites_path,  id: 'btn-pending-invites', remote: true %>
+  </div>
+</section>
+<section id="form-container">
+</section>
+<section id="listing-dashboard">
+  <%= render 'messaging/contacts/list_contacts', contacts: @user.contacts %>
+</section>
+<%= javascript_pack_tag "messaging/contacts" %>

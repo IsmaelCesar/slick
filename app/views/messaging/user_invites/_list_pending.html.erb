@@ -1,0 +1,22 @@
+<table border="1px">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> E-mail </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !pending_invites.empty? %>
+      <% pending_invites.each do |invite|%>
+        <tr>
+          <td> <%= invite.invitee.name %> </td>
+          <td> <%= invite.invitee.email %> </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="2"> You have no pending invites </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

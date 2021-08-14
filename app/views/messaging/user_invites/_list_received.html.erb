@@ -1,0 +1,27 @@
+<table border="1px">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !received_invites.empty? %>
+      <% received_invites.each do |invite|%>
+        <tr>
+          <td> <%= invite.inviter.name %> </td>
+          <td> <%= invite.inviter.email %> </td>
+          <td> 
+            <%= link_to 'Accept', messaging_accept_invite_path(invite), remote: true, method: :put %>
+            <%= link_to 'Decline', messaging_decline_invite_path(invite), remote: true, method: :delete%>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3"> You haven't received invites </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
