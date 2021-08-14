@@ -1,0 +1,51 @@
+@import 'bootstrap'; 
+@import 'slick-generics'; 
+
+html, body {
+  height: 100%;
+}
+
+.float-breaker { 
+  clear: both;
+}
+
+// Main page header
+
+header { 
+  border-bottom: 1px solid #600BE6; 
+  padding: 0;
+  nav  {
+    margin: auto;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    width: 70%;
+    .project-name-logo { 
+      float: left; 
+      display: flex; 
+      justify-content: space-evenly;
+    }
+
+    ul{ 
+      width: 15em;
+      float: right;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+      }
+
+    }
+  }
+}
+
+.link-to-root{
+  text-decoration: none;
+  color: #000000;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,26 @@
+
+// Generic implementations of the slick buttons
+
+$slick-main-color: #600BE6;
+$slick-light-green: #00E6B2;
+$slick-yellow: #E6DD0B;
+$slick-dark-purple: #3D0499;
+$slick-light-red: #E33500;
+
+.btn-slick-success { 
+  background-color: $slick-light-green;
+}
+
+.btn-slick-warning { 
+  background-color: $slick-yellow;
+}
+
+.btn-slick-danger { 
+  background-color: $slick-light-red;
+  color: white;
+}
+
+.btn-slick-main { 
+  background-color: $slick-main-color;
+  color: white
+}

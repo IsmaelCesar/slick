@@ -1,28 +1,30 @@
-<div>
-  <h1>Sign up</h1>
-
-  <fieldset>
-    <%= form_with model: @user, url: presentation_user_sign_up_apply_path do |f| %>
-      <div>
-        <%= f.label :name, 'User name'%>
-        <%= f.text_field :name, placeholder: 'Your name', required: true%>
-      </div>
-      <div>
-        <%= f.label :email, 'E-mail'%>
-        <%= f.text_field :email, placeholder: 'user@email.com', required: true%>
-      </div>
-      <div>
-        <%= f.label :password, 'Password'%>
-        <%= f.password_field :password, placeholder: 'Your password', required: true%>
-      </div>
-      <div>
-        <%= f.label :password_confirmation, 'Confirm password'%>
-        <%= f.password_field :password_confirmation, placeholder: 'Your password again', required: true%>
-      </div>
-      <div>
-        <%= f.button 'Clear', type: :reset %>
-        <%= f.submit 'Sign up', id: 'sign-up-apply'%>
+<div class="form-container">
+  <div class="fields-container">
+    <%= link_to root_path, class: 'link-to-root' do %>
+      <div class='project-name-logo'>
+        <%= image_tag 'logos/slick-logo-sem-fundo-out.png', width: 50 %>
+        <h1>Slick</h1>
       </div>
     <% end %>
-  </fieldset>
+    <fieldset id="form-sign-up">
+      <%= form_with model: @user, url: presentation_user_sign_up_apply_path, html: { class: 'form-login-signup' } do |f| %>
+        <div>
+          <%= f.text_field :name, placeholder: 'Your name', required: true, class: 'form-field form-control' %>
+        </div>
+        <div>
+          <%= f.text_field :email, placeholder: 'user@email.com', required: true, class: 'form-field form-control' %>
+        </div>
+        <div>
+          <%= f.password_field :password, placeholder: 'Your password', required: true, class: 'form-field form-control' %>
+        </div>
+        <div>
+          <%= f.password_field :password_confirmation, placeholder: 'Your password again', required: true, class: 'form-field form-control' %>
+        </div>
+        <div>
+          <%= f.submit 'Sign up', id: 'sign-up-apply', class: 'btn btn-slick-main'%>
+          <%= f.button 'Clear', id: 'btn-clear' , type: :reset, class: 'btn btn-slick-danger' %>
+        </div>
+      <% end %>
+    </fieldset>
+  </div>
 </div>

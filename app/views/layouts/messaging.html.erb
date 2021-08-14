@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <title> <%= current_user.name %>  </head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>  
+    <%= yield %>
+  </body>
+  <%= javascript_pack_tag 'messaging', 'data-turbolinks-track': 'reload' %>
+</html>

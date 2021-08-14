@@ -4,7 +4,7 @@
  * this file contains frontend logic for the login page
  */
 
-  let sign_up = document.querySelector('#sign-up') 
+  let sign_up = document.querySelector('#btn-sign-up') 
   sign_up?.addEventListener('click', (event) =>{
     event.preventDefault();
     window.location.replace('/presentation/user/sign_up')

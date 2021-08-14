@@ -1,0 +1,16 @@
+@import '../slick-generics';
+@import 'login-signup-generics';
+
+#form-login-container{
+  margin: auto; 
+  
+  #btn-login {
+    margin: 0; 
+    width: 49%;
+  }
+
+  #btn-sign-up{
+    margin: 0; 
+    width: 49%;
+  }
+}

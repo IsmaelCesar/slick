@@ -1,8 +1,19 @@
-<nav>
-    <h1>Welcome to Slick</h1>
-    <ul>
-        <li><%= link_to "Login", presentation_user_login_path %></li>
-        <li><%= link_to "Sign up", presentation_user_sign_up_path%></li>
-    </ul>
-</nav>
-<p>That's right! Slick! The app is mine and I'm keeping the name.</p>
+<header>
+    <nav>
+        <div class='project-name-logo'>
+            <%= image_tag 'logos/slick-logo-sem-fundo-out.png', width: 50 %>
+            <h1>Slick</h1>
+        </div>
+        <ul>
+            <li><%= link_to 'Login', presentation_user_login_path, class: 'btn btn-slick-success' %></li>
+            <li><%= link_to 'Sign up', presentation_user_sign_up_path, class: 'btn btn-slick-warning'%></li>
+        </ul>
+    </nav>
+    <p class="float-breaker"></p>
+</header>
+<section>
+    <!-- the content goes here -->
+</section>
+<footer>
+    Ismael Cesar
+</footer>
