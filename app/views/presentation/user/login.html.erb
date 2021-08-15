@@ -1,5 +1,10 @@
 <div id="form-login-container" class="form-container">
     <div class="fields-container">
+        <% if @error_message %>
+            <div class="alert alert-danger" id="user-error-alert"> 
+                <%= @error_message %>
+            </div>
+        <% end %>
         <%= link_to root_path, class: 'link-to-root' do %>
             <div class='project-name-logo'>
                 <%= image_tag 'logos/slick-logo-sem-fundo-out.png', width: 50 %>
