@@ -1,17 +1,12 @@
 <div id="form-login-container" class="form-container">
     <div class="fields-container">
-        <% if @error_message %>
-            <div class="alert alert-danger" id="user-error-alert"> 
-                <%= @error_message %>
-            </div>
-        <% end %>
         <%= link_to root_path, class: 'link-to-root' do %>
             <div class='project-name-logo'>
                 <%= image_tag 'logos/slick-logo-sem-fundo-out.png', width: 50 %>
                 <h1>Slick</h1>
             </div>
         <% end %>
-        <%= form_with scope: :user, url: login_path, html: { class: 'form-login-signup' } do |f|%>
+        <%= form_with scope: :user, url: login_path, html: { class: 'form-login-signup', 'data-remote': true } do |f|%>
             <div>
             <div class="form-field">
                 <%= f.text_field :email, placeholder: 'user@email.com', required: true, class: 'form-control'%>
