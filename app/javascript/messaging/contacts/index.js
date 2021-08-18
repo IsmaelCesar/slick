@@ -15,14 +15,3 @@ const mutation_observer = new MutationObserver(()=>{
   });
 });
 mutation_observer.observe(new_contact_container, { childList: true });
-
-const btn_logout = document.querySelector('#btn-logout'); 
-btn_logout?.addEventListener('click', (event)=>{
-  event.preventDefault();
-  fetch('/logout', { 
-    headers: { 
-      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-    }, 
-    method: 'PATCH' })
-})
-
