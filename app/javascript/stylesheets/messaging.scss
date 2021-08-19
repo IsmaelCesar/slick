@@ -1,2 +1,20 @@
 // This is the main file with implementations of the messaging module
+@import 'slick-generics'; 
 @import 'bootstrap'; 
+@import 'messaging/side_menu.scss';
+
+#side-menu { 
+  width: 10%; 
+  height: 100vh;
+  margin: 0;
+  box-shadow: 5px 0px 5px #979797;
+  background-color: $slick-main-color;
+  float: left;
+}
+
+#messaging-content{
+  float: right;
+  width: 90%;
+  margin: 0;
+}
+

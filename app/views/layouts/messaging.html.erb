@@ -8,10 +8,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= javascript_pack_tag 'messaging', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>  
-    <%= yield %>
+    <%= render 'layouts/messaging_partials/side_menu'%>
+    <section id="messaging-content">
+      <%= yield %>
+    </section>
   </body>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
+  <%= javascript_pack_tag 'messaging', 'data-turbolinks-track': 'reload' %>
 </html>

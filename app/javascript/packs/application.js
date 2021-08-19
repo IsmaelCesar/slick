@@ -9,7 +9,10 @@ import * as ActiveStorage from "@rails/activestorage";
 
 import 'stylesheets/application'
 
-import 'bootstrap';
+import "bootstrap";
+import '@popperjs/core';
+import "@fortawesome/fontawesome-free/css/all";
+
 import "channels";
 
 Rails.start();
