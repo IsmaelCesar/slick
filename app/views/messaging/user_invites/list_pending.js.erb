@@ -1,6 +1,6 @@
 <% pending_invites = j render partial: 'messaging/user_invites/list_pending', locals: { pending_invites: pending_invites } %>
 (function (){
-  let listing_dashboard = document.querySelector('#listing-dashboard')
+  let listing_dashboard = document.querySelector('#listing-contacts')
   if(listing_dashboard){
     listing_dashboard.innerHTML = '<%= pending_invites %>'
   }

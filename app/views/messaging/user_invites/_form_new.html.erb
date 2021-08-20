@@ -1,12 +1,20 @@
-<%= form_with url: messaging_create_user_invite_path, method: :post, html: { 'data-remote': true } do |f| %>
-  <div>
-    <div>
-      <%= f.label :user_email, 'e-mail'%>
-      <%= f.email_field :user_email, placeholder: 'contact@email.com', id: 'user-email', required: true  %>
-    </div>
-    <div>
-      <%= f.submit 'Add', id: 'add-new-contact' %>
-      <%= f.button 'Cancel', type: :reset, id: 'cancel-new-invite'%>
+<div id="modal-new-invite" class="modal fade" aria-labeledby="modal-new-invite" tab-index="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <%= form_with url: messaging_create_user_invite_path, method: :post, html: { 'data-remote': true, id: 'form-user-invite'} do |f| %>
+        <div class="modal-body">
+          <div>
+            <%= f.label :user_email, 'E-mail', class: 'form-label'%>
+            <%= f.email_field :user_email, placeholder: 'contact@email.com', id: 'user-email', class: 'form-control', required: true  %>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <%= f.submit 'Add', class: 'btn btn-success', id: 'add-new-contact' %>
+            <%= f.button 'Cancel', type: :reset, class: 'btn btn-danger', id: 'cancel-new-invite', 'data-bs-dismiss': 'modal'%>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>

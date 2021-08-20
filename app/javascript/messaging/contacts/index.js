@@ -5,13 +5,25 @@
  * the index page.
  */
 
+  import { Modal } from "bootstrap"
+  import { AjaxBuilder } from "../../packs/application";
 
-// Monitoring changes in the form container 
-const new_contact_container = document.querySelector('#form-container');
-const mutation_observer = new MutationObserver(()=>{
-  document.querySelector('#cancel-new-invite')?.addEventListener('click', ()=>{
-    let contact_form = document.querySelector('#form-container form');
-    contact_form.style.display = 'none';
-  });
-});
-mutation_observer.observe(new_contact_container, { childList: true });
+  const modal_container_observer = new MutationObserver(()=>{
+    const ajax_builder = new AjaxBuilder();
+
+    let modal_new_invite = new Modal(document.querySelector('#modal-new-invite')); 
+    modal_new_invite.show();
+
+    document.querySelector('#add-new-contact')?.addEventListener('click', (event)=>{
+      event.preventDefault();
+      let form_user_invite = document.querySelector('#form-user-invite'); 
+      let form_data = new FormData(form_user_invite);
+      ajax_builder.post('/messaging/user_invites/create', Object.fromEntries(form_data))
+    })
+
+  })
+
+  const modal_conainer = document.querySelector('#modal-container');
+  if(modal_conainer){
+    modal_container_observer.observe(modal_conainer, { childList: true })
+  }

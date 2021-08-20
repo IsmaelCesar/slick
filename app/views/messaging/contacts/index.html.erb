@@ -1,16 +1,35 @@
 <section id="user-action">
-  <div>
-    <h1>Welcome <%= @user.name %></h1>
-    <p>Your email is: <%= @user.email %></p>
-    <%= link_to 'Make invite', messaging_new_user_invite_path,  id: 'btn-new-user-invite', remote: true %>
-    <%= link_to 'List contacts', messaging_contacts_index_path,  id: 'btn-received-invites', remote: true %>
-    <%= link_to 'Received invites', messaging_list_received_invites_path,  id: 'btn-received-invites', remote: true %>
-    <%= link_to 'Pending invites', messaging_list_pending_invites_path,  id: 'btn-pending-invites', remote: true %>
+  <div style="display: none;">
+    <%#= link_to 'Make invite', messaging_new_user_invite_path,  id: 'btn-new-user-invite', remote: true %>
+    <%#= link_to 'List contacts', messaging_contacts_index_path,  id: 'btn-received-invites', remote: true %>
+    <%#= link_to 'Received invites', messaging_list_received_invites_path,  id: 'btn-received-invites', remote: true %>
+    <%#= link_to 'Pending invites', messaging_list_pending_invites_path,  id: 'btn-pending-invites', remote: true %>
   </div>
 </section>
-<section id="form-container">
+<section id="user-actions">
+  <nav>
+    <ul>
+      <li>
+        <%= link_to '#', remote: true do %>
+            <i class="fas fa-user-clock"></i> Pending invites
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#', remote: true do %>
+            <i class="fas fa-envelope-open-text"></i> Received invites
+        <% end %>
+      </li>
+      <li>
+        <%= link_to messaging_new_user_invite_path, id: 'link-add-contact', remote: true do %>
+            <i class="fas fa-user-plus"></i> Add contact
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 </section>
-<section id="listing-dashboard">
+<section id="listing-contacts">
   <%= render 'messaging/contacts/list_contacts', contacts: @user.contacts %>
+</section>
+<section id="modal-container">
 </section>
 <%= javascript_pack_tag "messaging/contacts" %>

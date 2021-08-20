@@ -1,8 +1,8 @@
 <% new_contact = j render 'messaging/user_invites/form_new', layout: false %>
 // Scoping variables
 (function(){
-  let new_contact_container = document.querySelector('#form-container');
+  let new_contact_container = document.querySelector('#modal-container');
   if(new_contact_container){
-    new_contact_container.innerHTML = '<%= new_contact %>'
-  }
+    new_contact_container.innerHTML = '<%= new_contact %>';
+  } 
 })()
