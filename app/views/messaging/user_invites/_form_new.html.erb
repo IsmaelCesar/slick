@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
       </div>
-      <%= form_with url: messaging_create_user_invite_path, method: :post, html: { 'data-remote': true, id: 'form-user-invite'} do |f| %>
+      <%= form_with scope: :user, url: messaging_create_user_invite_path, method: :post, html: { 'data-remote': true, id: 'form-user-invite', name: 'user_form'} do |f| %>
         <div class="modal-body">
           <div>
             <%= f.label :user_email, 'E-mail', class: 'form-label'%>

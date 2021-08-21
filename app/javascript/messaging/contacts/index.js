@@ -17,11 +17,23 @@
     document.querySelector('#add-new-contact')?.addEventListener('click', (event)=>{
       event.preventDefault();
       let form_user_invite = document.querySelector('#form-user-invite'); 
-      let form_data = new FormData(form_user_invite);
-      ajax_builder.post('/messaging/user_invites/create', Object.fromEntries(form_data))
+      if(form_user_invite.querySelector('#user-email').value != ""){
+        let form_data = new FormData(form_user_invite);
+        console.log(user_form)
+        /*ajax_builder.post('/messaging/user_invites/create', 
+                          Object.fromEntries(form_data), 
+                          (data)=>{ 
+                            console.log(data)
+                          }, (error)=>{
+                            console.log(error);
+                          });*/
+      }
+      else{
+        console.log('Preencha o campo')
+      }
     })
 
-  })
+  });
 
   const modal_conainer = document.querySelector('#modal-container');
   if(modal_conainer){

@@ -24,21 +24,26 @@ class Messaging::UserInvitesController < Messaging::MessagingController
 
   # [POST] /messaging/user_invites/create
   def create
+    puts params
     @inviter = current_user
     @invitee = User.find_by(email: params[:user_email])
-    @is_successful = false
+    @status = :ok
     @create_message = 'usuário não encontrado'
-    unless @invitee.nil?
+    if !@invitee.nil?
       @user_invite = UserInvite.new(inviter: @inviter, invitee: @invitee)
       if @user_invite.save
-        @is_successful = true
+        @status = :unprocessable_entity
       else
         @create_message = "Usuário inválido \n #{Contact.errors.full_messages.join('\n')}"
       end
+    else
+      @status = :not_found
+      @create_message = 'Usuário não encontrado'
     end
     respond_to do |format|
-      @pending_invites = @inviter.invites_sent.where(is_accepted: false)
-      format.js { render 'messaging/user_invites/list_pending', locals: { pending_invites: @pending_invites } }
+      #@pending_invites = @inviter.invites_sent.where(is_accepted: false)
+      #format.js { render 'messaging/user_invites/list_pending', locals: { pending_invites: @pending_invites } }
+      format.json { render json: { messagem: @create_message }, status: @status } 
     end
   end
   

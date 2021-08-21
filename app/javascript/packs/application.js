@@ -27,10 +27,10 @@ ActiveStorage.start();
 export class AjaxBuilder { 
   constructor () {
     this.request_headers = {
-      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]'),
-      'X-Requested-With': 'XMLHttoRequest',
-      'Content-Type': 'application/html', 
-      'Accept': 'application/html'
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'application/x-www-form-urlencoded', 
+      'Accept': 'application/json'
     }
   }
 
@@ -41,34 +41,35 @@ export class AjaxBuilder {
       return response.text(); 
     })
     .then((data)=>{
-      success_call_back?.(data); 
+      success_callback?.(data); 
     })
     .catch( (error)=>{
       error_callback?.(error)
     });
   }
 
-  post(url, data, success_call_back = undefined, error_call_back = undefined){
+  post(url, data, success_callback = undefined, error_callback = undefined){
     fetch(url, { 
-                 method: 'GET',
+                 method: 'POST',
                  headers: this.request_headers, 
-                 body: JSON.stringify(data) 
+                 credentials: "same-origin",
+                 body: JSON.stringify(data)
                 } )
     .then((response) => {
       if(!response.ok) throw new Error(response.text())
       return response.text(); 
     })
     .then((data)=>{
-      success_call_back?.(data); 
+      success_callback?.(data); 
     })
     .catch( (error)=>{
       error_callback?.(error)
     });
   }
 
-  put(url, data, success_call_back = undefined, error_call_back = undefined) {
+  put(url, data, success_callback = undefined, error_callback = undefined) {
     fetch(url, { 
-      method: 'GET',
+      method: 'PUT',
       headers: this.request_headers, 
       body: JSON.stringify(data) 
      } )
@@ -77,9 +78,14 @@ export class AjaxBuilder {
       return response.text(); 
     })
     .then((data)=>{
-      success_call_back?.(data); 
+      success_callback?.(data); 
     })
     .catch( (error)=>{
+      console.log(error)
+      return error.json();
+      // error_callback?.(error)
+    })
+    .then((error)=>{
       error_callback?.(error)
     });
   }
