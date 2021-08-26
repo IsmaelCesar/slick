@@ -29,7 +29,7 @@ export class AjaxBuilder {
     this.request_headers = {
       'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
       'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/x-www-form-urlencoded', 
+      'Content-Type': 'application/json', 
       'Accept': 'application/json'
     }
   }
@@ -37,14 +37,20 @@ export class AjaxBuilder {
   get(url, success_callback = undefined, error_callback = undefined){ 
     fetch(url, { method: 'GET', headers: this.request_headers } )
     .then((response) => { 
-      if(!response.ok) throw new Error(response.text())
+      console.log('Response')
+      console.log(response)
+      if(!response.ok) throw new Error('Something went wrong')
       return response.text(); 
     })
     .then((data)=>{
       success_callback?.(data); 
     })
     .catch( (error)=>{
-      error_callback?.(error)
+      console.log('Error'); 
+      console.log(error);
+      return error.json();
+    }).then((data)=>{
+      error_callback?.(data)
     });
   }
 

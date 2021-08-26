@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    alertifyjs-rails (1.12.0)
     bcrypt (3.1.16)
     bcrypt (3.1.16-java)
     better_errors (2.9.1)
@@ -238,6 +239,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  alertifyjs-rails
   bcrypt (~> 3.1.7)
   better_errors (~> 2.9, >= 2.9.1)
   bootsnap (>= 1.4.4)

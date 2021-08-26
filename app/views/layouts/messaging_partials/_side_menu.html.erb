@@ -3,6 +3,9 @@
     <!-- User's data section -->
     <div id="user-avatar">
     </div>
+    <p class="user-name">
+      <%= current_user.name %>
+    </p>
     <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip'  do %>
       <i class="fas fa-power-off" style="color: white;"></i>
     <% end %>

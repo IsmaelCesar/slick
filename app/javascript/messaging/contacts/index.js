@@ -17,19 +17,18 @@
     document.querySelector('#add-new-contact')?.addEventListener('click', (event)=>{
       event.preventDefault();
       let form_user_invite = document.querySelector('#form-user-invite'); 
-      if(form_user_invite.querySelector('#user-email').value != ""){
+      if(form_user_invite.checkValidity()){
         let form_data = new FormData(form_user_invite);
-        console.log(user_form)
-        /*ajax_builder.post('/messaging/user_invites/create', 
+        ajax_builder.post('/messaging/user_invites/create', 
                           Object.fromEntries(form_data), 
                           (data)=>{ 
                             console.log(data)
                           }, (error)=>{
                             console.log(error);
-                          });*/
+                          });
       }
       else{
-        console.log('Preencha o campo')
+        console.log('Preencha o campo');
       }
     })
 

@@ -1,22 +1,11 @@
 <table border="1px">
-  <thead>
-    <tr>
-      <th> Email </th>
-      <th> Action </th>
-    </tr>
-  </thead>
   <tbody>
     <% if !contacts.empty? %>
       <% contacts.each do |contact|%>
         <tr>
           <td> <%= contact.name %> </td>
-          <td> <%= link_to 'Chat', '#' %> </td>
         </tr>
       <% end %>
-    <% else %>
-      <tr>
-        <td colspan="2"> No contacts have been added </td>
-      </tr>
     <% end %>
   </tbody>
 </table>

@@ -31,9 +31,8 @@ class Messaging::UserInvitesController < Messaging::MessagingController
     @create_message = 'usuário não encontrado'
     if !@invitee.nil?
       @user_invite = UserInvite.new(inviter: @inviter, invitee: @invitee)
-      if @user_invite.save
+      unless @user_invite.save
         @status = :unprocessable_entity
-      else
         @create_message = "Usuário inválido \n #{Contact.errors.full_messages.join('\n')}"
       end
     else

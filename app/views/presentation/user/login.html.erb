@@ -6,7 +6,7 @@
                 <h1>Slick</h1>
             </div>
         <% end %>
-        <%= form_with scope: :user, url: login_path, html: { class: 'form-login-signup', 'data-remote': true } do |f|%>
+        <%= form_with scope: :user, url: login_path, html: { class: 'form-login-signup', 'data-remote': true, name: 'form_login' } do |f|%>
             <div>
             <div class="form-field">
                 <%= f.text_field :email, placeholder: 'user@email.com', required: true, class: 'form-control'%>
