@@ -6,9 +6,15 @@
     <p class="user-name">
       <%= current_user.name %>
     </p>
-    <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip'  do %>
-      <i class="fas fa-power-off" style="color: white;"></i>
-    <% end %>
+    <div class="user-options">
+      <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip'  do %>
+        <i class="fas fa-power-off" style="color: white;"></i>
+      <% end %>
+
+      <%= link_to '#', title: 'Count configuration', 'data-toggle': 'tooltip'  do %>
+        <i class="fas fa-cog" style="color: white;"></i>
+      <% end %>
+    </div>
   </section>
   <section> 
     <!-- User's liks section -->
