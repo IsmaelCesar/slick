@@ -91,3 +91,45 @@
 
   }
 }
+
+.messaging-group{
+  margin-top: 1.5em;
+  background-color: white;
+  height: 3em; 
+  width: 80%;
+  border-radius: 0px 10px 10px 0px;
+
+  a { 
+    display: inline-block;
+    text-decoration: none;
+    color: black; 
+    height: 100%;
+    width: 100%;
+  }
+
+  i {
+    display: inline-block;
+  }
+}
+
+.group-actions{
+  display: flex;
+  justify-content: space-evenly;
+  height: inherit;
+  margin-top: 15px;
+ 
+  .group-item{
+    background-color: white;
+    border-radius: 100%;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    
+    i { 
+      display: block;
+      margin: auto;
+    }
+  }
+
+}

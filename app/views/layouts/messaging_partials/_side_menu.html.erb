@@ -17,6 +17,25 @@
     </div>
   </section>
   <section> 
-    <!-- User's liks section -->
+    <section class="messaging-group">
+      <%= link_to '#' do %> 
+        <i class="fas fa-users"> </i> Contacts
+      <% end %>
+    </section>
+    <% @user.user_groups.each do |group| %>
+      <section class="messaging-group">
+        <%= link_to group do %> 
+          <i class="fas fa-users"> </i> Contacts
+        <% end %>
+      </section>
+    <% end %>
+    <section class="group-actions">
+      <div class="group-item" title="Search groups" data-toggle="tooltip">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="group-item" title="Create group" data-toggle="tooltip">
+        <i class="fas fa-plus"></i>
+      </div>
+    </seciton>
   </section>
 </aside>

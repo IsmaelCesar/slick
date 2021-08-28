@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :contacts
+  has_many :user_groups
   has_many :invites_sent, class_name: 'UserInvite', foreign_key: 'user_inviter_id'
   has_many :invites_received, class_name: 'UserInvite', foreign_key: 'user_invitee_id'
 
