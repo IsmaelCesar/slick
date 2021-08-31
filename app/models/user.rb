@@ -5,7 +5,6 @@ class User < ApplicationRecord
   validates :email, format: /[a-zA-Z_]+[a-zA-Z0-1_]*@([a-zA-Z]+\.[a-zA-Z])+/i, presence: true, uniqueness: true
   validates :password, presence: true
 
-  has_many :contacts
   has_many :user_groups
   has_many :invites_sent, class_name: 'UserInvite', foreign_key: 'user_inviter_id'
   has_many :invites_received, class_name: 'UserInvite', foreign_key: 'user_invitee_id'
