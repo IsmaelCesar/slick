@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text_channel_message: one
+  label: MyString
+
+two:
+  text_channel_message: two
+  label: MyString

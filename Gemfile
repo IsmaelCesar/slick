@@ -63,8 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'figaro', '~> 1.2'
 
 # Gem for displaying pretty alerts
-<<<<<<< HEAD
 gem 'alertifyjs-rails'
-=======
-gem 'alertifyjs-rails', '~> 1.12'
->>>>>>> 2f3b6f0068f31771a21c8b099b66e88fa9779e6a
