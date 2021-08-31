@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authorized?
-    redirect_to presentation_user_login_path unless logged_in?
+    if !logged_in?
+      redirect_to presentation_user_login_path
+    else
+      @user = current_user
+    end
   end
 
 end

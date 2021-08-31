@@ -1,11 +1,11 @@
-<table border="1px">
-  <tbody>
-    <% if !contacts.empty? %>
-      <% contacts.each do |contact|%>
-        <tr>
-          <td> <%= contact.name %> </td>
-        </tr>
-      <% end %>
+<ul>
+  <% if !contacts.empty? %>
+    <% contacts.each do |contact|%>
+      <li>
+        <%= link_to '#', 'data-turbolinks-track': 'reaload' do %>
+          <%= contact.name %> 
+        <% end %>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</ul>
