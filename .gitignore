@@ -33,7 +33,6 @@
 /config/master.key
 
 # Ignoring .yml files
-config/database.yml
 config/application.yml
 config/secrets.yml
 config/cable.yml
