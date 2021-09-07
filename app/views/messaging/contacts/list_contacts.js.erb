@@ -1,7 +1,0 @@
-<% contact_list = j render partial: 'messaging/contacts/list_contacts', locals: { contacts: contacts }%>
-(function (){
-  let contact_container = document.querySelector('#listing-contacts')
-  if(contact_container){
-    contact_container.innerHTML = '<%= contact_list %>'
-  }
-})()

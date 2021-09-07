@@ -6,15 +6,18 @@
  */
 
   import { Modal } from "bootstrap"
-  import { AjaxBuilder } from "../../packs/application";
+  import { AjaxBuilder } from "../../packs/ajax_utils";
 
-  const modal_container_observer = new MutationObserver(()=>{
-    const ajax_builder = new AjaxBuilder();
+  const ajax_builder = new AjaxBuilder();
+  const modal_container = document.querySelector('#modal-container');
+
+  const modal_container_observer = new MutationObserver(()=>{    
+    console.log('Mutated')
 
     let modal_new_invite = new Modal(document.querySelector('#modal-new-invite')); 
     modal_new_invite.show();
 
-    document.querySelector('#add-new-contact')?.addEventListener('click', (event)=>{
+    document.querySelector('#link-add-friend')?.addEventListener('click', (event)=>{
       event.preventDefault();
       let form_user_invite = document.querySelector('#form-user-invite'); 
       if(form_user_invite.checkValidity()){
@@ -34,7 +37,7 @@
 
   });
 
-  const modal_conainer = document.querySelector('#modal-container');
-  if(modal_conainer){
-    modal_container_observer.observe(modal_conainer, { childList: true })
+  if(modal_container){
+    console.log('Applying mutation observer')
+    modal_container_observer.observe(modal_container, { childList: true })
   }

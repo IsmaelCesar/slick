@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="144mm"
+   height="143mm"
+   viewBox="0 0 144 143"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="logo-slick-upgrade.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.46235269"
+     inkscape:cx="582.88835"
+     inkscape:cy="142.74817"
+     inkscape:window-width="1366"
+     inkscape:window-height="689"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:lockguides="false"
+     width="209mm" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g831"
+       transform="translate(-26.219256,-22.812718)">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#600be6;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path547"
+         cx="100.9159"
+         cy="61.280827"
+         r="33.924347" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#e6dd0b;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path547-9"
+         cx="133.71306"
+         cy="96.688095"
+         r="33.924347" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#00e6b2;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path547-9-6"
+         cx="63.629246"
+         cy="97.542328"
+         r="33.924347" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#3d0499;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path547-1"
+         cx="102.568"
+         cy="129.27234"
+         r="33.924347" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4.29907;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path547-3"
+         cx="101.22158"
+         cy="97.497047"
+         r="48.614399" />
+    </g>
+  </g>
+</svg>

@@ -1,9 +1,9 @@
 <ul>
-  <% if !contacts.empty? %>
-    <% contacts.each do |contact|%>
+  <% if !chats.empty? %>
+    <% chats.each do |chat|%>
       <li>
         <%= link_to '#', 'data-turbolinks-track': 'reaload' do %>
-          <%= contact.name %> 
+          <%= chat.name %> 
         <% end %>
       </li>
     <% end %>

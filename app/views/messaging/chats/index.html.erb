@@ -13,15 +13,15 @@
           <% end %>
         </li>
         <li>
-          <%= link_to messaging_new_user_invite_path, id: 'link-add-contact', remote: true do %>
-              <i class="fas fa-user-plus"></i> Add contact
+          <%= link_to messaging_new_user_invite_path, id: 'link-add-friend', remote: true do %>
+              <i class="fas fa-user-plus"></i> Add friend
           <% end %>
         </li>
       </ul>
     </nav>
   </section>
   <section class="listing-chats">
-    <%= render 'messaging/contacts/list_contacts', contacts: @user.contacts %>
+    <%= render 'messaging/chats/list_chats', chats: @user.chats %>
   </section>
   <section id="modal-container">
   </section>

@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   end
 
   namespace :messaging do
-    get 'contacts/index'
-    post 'contacts/create', as: :create_contact
+    get 'chats/index'
+    post 'chats/create', as: :create_contact
 
     # new_user_invites
     get 'user_invites/new', as: :new_user_invite

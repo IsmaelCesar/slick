@@ -1,10 +1,10 @@
-class Messaging::ContactsController < Messaging::MessagingController
+class Messaging::ChatsController < Messaging::MessagingController
   def index
     @user = current_user
-    @contacts = @user.contacts
+    @chats = @user.chats
     respond_to do |format|
       format.html
-      format.js { render 'messaging/contacts/list_contacts', locals: { contacts: @contacts } }
+      format.js { render 'messaging/contacts/list_chats', locals: { chats: @chats } }
     end
   end
 

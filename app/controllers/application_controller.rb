@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def authorized?
-    redirect_to messaging_contacts_index_path if logged_in?
+    redirect_to messaging_chats_index_path if logged_in?
   end
 
   def not_authorized?
