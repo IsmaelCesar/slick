@@ -1,0 +1,14 @@
+<section class="messages-list-contaner">
+  <section class="messages-list-header">
+  </section>
+  <section class="messages-content-list">
+  </section>
+  <section class="messages-list-text-form">
+    <%= form_with method: :post, id: 'form-message-content' do |f| %>
+      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.button class: 'btn btn-secondary', id: 'btn-send-message' do %>
+          <i class="fas fa-paper-plane"></i>
+      <% end %>
+    <% end %>
+  </section>
+</section>

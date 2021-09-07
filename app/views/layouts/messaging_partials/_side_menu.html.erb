@@ -7,7 +7,7 @@
       <%= current_user.name %>
     </p>
     <div class="user-options">
-      <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip'  do %>
+      <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip' do %>
         <i class="fas fa-power-off" style="color: white;"></i>
       <% end %>
 
@@ -30,12 +30,14 @@
       </section>
     <% end %>
     <section class="group-actions">
-      <div class="group-item" title="Search groups" data-toggle="tooltip">
+      <!-- <div class="group-item" title="Search groups" data-toggle="tooltip"> -->
+      <%= button_tag class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
         <i class="fas fa-search"></i>
-      </div>
-      <div class="group-item" title="Create group" data-toggle="tooltip">
+      <% end %>
+      <!-- <div class="group-item" title="Create group" data-toggle="tooltip"> -->
+      <%= button_tag class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
         <i class="fas fa-plus"></i>
-      </div>
+      <% end %>
     </seciton>
   </section>
 </aside>
