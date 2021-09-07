@@ -10,47 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_224958) do
+ActiveRecord::Schema.define(version: 2021_08_31_010631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chat_mesages", force: :cascade do |t|
+  create_table "chat_messages", force: :cascade do |t|
     t.bigint "message_id", null: false
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_id"], name: "index_chat_messages_on_chat_id"
+    t.index ["message_id"], name: "index_chat_messages_on_message_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "contact_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["contact_id"], name: "index_chat_mesages_on_contact_id"
-    t.index ["message_id"], name: "index_chat_mesages_on_message_id"
+    t.index ["contact_id"], name: "index_chats_on_contact_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
-  create_table "contacts", force: :cascade do |t|
+  create_table "friends", force: :cascade do |t|
+    t.string "Friend"
     t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_contact_id"
-    t.index ["user_id"], name: "index_contacts_on_user_id"
+    t.index ["friend_id"], name: "index_friends_on_friend_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "nome"
+    t.string "group_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
-    t.bigint "message_id"
     t.bigint "user_id", null: false
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["message_id"], name: "index_messages_on_message_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "text_channel_messages", force: :cascade do |t|
-    t.bigint "message_id", null: false
     t.bigint "text_channel_id", null: false
+    t.bigint "message_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["message_id"], name: "index_text_channel_messages_on_message_id"
@@ -76,14 +86,15 @@ ActiveRecord::Schema.define(version: 2021_08_07_224958) do
 
   create_table "text_threads", force: :cascade do |t|
     t.bigint "text_channel_message_id", null: false
+    t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["text_channel_message_id"], name: "index_text_threads_on_text_channel_message_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_user_groups_on_group_id"
@@ -91,28 +102,30 @@ ActiveRecord::Schema.define(version: 2021_08_07_224958) do
   end
 
   create_table "user_invites", force: :cascade do |t|
-    t.boolean "is_accepted"
+    t.boolean "is_accepted", default: false
+    t.integer "user_invite_id", null: false
+    t.integer "user_invitee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_inviter_id"
-    t.integer "user_invitee_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "online"
     t.string "status"
+    t.string "user_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "chat_mesages", "contacts"
-  add_foreign_key "chat_mesages", "messages"
-  add_foreign_key "contacts", "users"
-  add_foreign_key "contacts", "users", column: "user_contact_id"
-  add_foreign_key "messages", "messages"
-  add_foreign_key "messages", "users"
+  add_foreign_key "chat_messages", "chats"
+  add_foreign_key "chat_messages", "messages"
+  add_foreign_key "chats", "users"
+  add_foreign_key "chats", "users", column: "contact_id"
+  add_foreign_key "friends", "friends"
+  add_foreign_key "friends", "users"
   add_foreign_key "text_channel_messages", "messages"
   add_foreign_key "text_channel_messages", "text_channels"
   add_foreign_key "text_channels", "groups"
@@ -121,6 +134,6 @@ ActiveRecord::Schema.define(version: 2021_08_07_224958) do
   add_foreign_key "text_threads", "text_channel_messages"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
+  add_foreign_key "user_invites", "users", column: "user_invite_id"
   add_foreign_key "user_invites", "users", column: "user_invitee_id"
-  add_foreign_key "user_invites", "users", column: "user_inviter_id"
 end
