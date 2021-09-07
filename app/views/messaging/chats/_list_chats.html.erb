@@ -3,6 +3,7 @@
     <% chats.each do |chat|%>
       <li>
         <%= link_to messaging_show_chats_path(chat.id), remote: true, 'data-turbolinks-track': 'reaload', class: 'btn-select-chat' do %>
+          <%= hidden_field_tag :chat_id, chat.id %>
           <%= chat.contact.id == current_user.id  ? chat.user.name : chat.contact.name %> 
         <% end %>
       </li>

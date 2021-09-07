@@ -7,7 +7,7 @@ module MessageAttributes
   end
 
   def user
-    message&.use
+    message&.user
   end
 
   #

@@ -1,6 +1,6 @@
 <section class="messages-list-contaner">
   <section class="messages-list-header">
-    <h3><%= chat_contact.name %></h3>
+    <h3><%= resource_header %></h3>
   </section>
   <section class="messages-content-list">
     <% messages.each do |message| %>
@@ -8,7 +8,8 @@
     <% end %>
   </section>
   <section class="messages-list-text-form">
-    <%= form_with method: :post, id: 'form-message-content', html: { 'data-remote': true }  do |f| %>
+    <%= form_with method: :post, url: resource_url , id: 'form-message-content', html: { 'data-remote': true }  do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.text_area :content, class: 'form-control' %>
       <%= f.button class: 'btn', id: 'btn-send-message' do %>
           <i class="fas fa-paper-plane"></i>

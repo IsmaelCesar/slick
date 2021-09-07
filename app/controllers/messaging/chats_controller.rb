@@ -1,4 +1,7 @@
 class Messaging::ChatsController < Messaging::MessagingController
+
+  before_action :set_chat, only: %i[ show send_message]
+
   def index
     @user = current_user
     @chats = @user.chats
@@ -10,12 +13,24 @@ class Messaging::ChatsController < Messaging::MessagingController
 
   # [GET] messaging/contacts/show/:id
   def show
-    @chat = Chat.find(params[:id])
     @chat_contact = @chat.get_contact(current_user)
     @chat_messages = @chat.chat_messages.limit(20)
     respond_to do |format|
       format.js { render 'messaging/chats/show', locals: { messages: @chat_messages,
+                                                           chat: @chat, 
                                                            chat_contact: @chat_contact} }
+    end
+  end
+
+  # [POST] /messaging/chats/send_message/:id
+  def send_message
+    ActiveRecord::Base.transaction do
+      @user = current_user
+      @message = Message.new(content: params[:content], user: @user)
+      @chat_message = ChatMessage.new(message: @message, chat: @chat)
+      if @message.save && @chat_message.save
+        SendChatMessageJob.set(wait: 0.5.second).perform_later(@chat.id)
+      end
     end
   end
 
@@ -27,4 +42,10 @@ class Messaging::ChatsController < Messaging::MessagingController
   def create
   end
   
+  private
+
+  def set_chat
+    @chat = Chat.find(params[:id])
+  end
+
 end

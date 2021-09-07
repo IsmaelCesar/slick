@@ -7,6 +7,8 @@
 
   import { Modal } from "bootstrap"
   import { AjaxBuilder } from "../../packs/ajax_utils";
+  import consumer from "../../channels/consumer";
+  import init_subscription_for_resource from "../../channels/messaging_channel"
 
   const ajax_builder = new AjaxBuilder();
   const modal_container = document.querySelector('#modal-container');
@@ -49,11 +51,13 @@
         let active_list_item = document.querySelector('li.active');
         if(active_list_item){ 
           active_list_item.classList.remove('active');
+          consumer.disconnect();
         }
 
         let parent_list_item = button.parentNode;
+        let chat_id_field = parent_list_item.querySelector('#chat_id');
         parent_list_item.classList.add('active');
-
+        consumer.chat_messages = init_subscription_for_resource(consumer, 'chat', chat_id_field.value);
       })
     });
   }

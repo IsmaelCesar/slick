@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount ActionCable.server => '/cable'
+
   namespace :presentation do
 
     namespace :user do
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   namespace :messaging do
     get 'chats/index'
     get 'chats/show/:id', to: 'chats#show', as: :show_chats
+    post 'chats/send_message/:id', to: 'chats#send_message', as: :send_message
     post 'chats/create', as: :create_contact
 
     # new_user_invites
