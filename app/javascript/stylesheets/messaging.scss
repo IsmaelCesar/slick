@@ -7,7 +7,7 @@
   width: 10%; 
   height: 100vh;
   margin: 0;
-  box-shadow: 5px 0px 5px #979797;
+  box-shadow: 5px 0px 5px #f1f1f1;
   background-color: $slick-main-color;
   float: left;
 }
@@ -15,6 +15,7 @@
 #messaging-content{
   float: right;
   width: 90%;
+  display: flex;
   height: 100%;
   margin: 0;
 }
@@ -92,6 +93,14 @@
   }
 }
 
+.messaging-chat-content{
+  background-color: #c9c9c9;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
 .messaging-group{
   margin-top: 1.5em;
   background-color: white;
@@ -133,3 +142,4 @@
   }
 
 }
+

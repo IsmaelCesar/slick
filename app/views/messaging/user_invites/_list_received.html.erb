@@ -1,5 +1,5 @@
-<table border="1px">
-  <thead>
+<table class="table table-hover">
+  <thead class="table-primary">
     <tr>
       <th> Name </th>
       <th> Email </th>
@@ -13,8 +13,12 @@
           <td> <%= invite.inviter.name %> </td>
           <td> <%= invite.inviter.email %> </td>
           <td> 
-            <%= link_to 'Accept', messaging_accept_invite_path(invite), remote: true, method: :put %>
-            <%= link_to 'Decline', messaging_decline_invite_path(invite), remote: true, method: :delete%>
+            <%= link_to messaging_accept_invite_path(invite), remote: true, method: :put do %>
+              <i class="fas fa-check"></i>
+            <% end %>
+            <%= link_to messaging_decline_invite_path(invite), remote: true, method: :delete do %>
+              <i class="fas fa-times"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>

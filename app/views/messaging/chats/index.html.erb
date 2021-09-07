@@ -3,12 +3,12 @@
     <nav>
       <ul>
         <li>
-          <%= link_to '#', remote: true do %>
+          <%= link_to messaging_list_pending_invites_path, remote: true do %>
               <i class="fas fa-user-clock"></i> Pending invites
           <% end %>
         </li>
         <li>
-          <%= link_to '#', remote: true do %>
+          <%= link_to messaging_list_received_invites_path, remote: true do %>
               <i class="fas fa-envelope-open-text"></i> Received invites
           <% end %>
         </li>
@@ -25,4 +25,6 @@
   </section>
   <section id="modal-container">
   </section>
+</section>
+<section class="messaging-chat-content">
 </section>

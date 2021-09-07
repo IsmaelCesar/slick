@@ -49,12 +49,18 @@ class Messaging::UserInvitesController < Messaging::MessagingController
   # [PUT] /messaging/user_invites/accept/:id
   def accept
     @user_invite = UserInvite.find(params[:id])
-    Contact.create(user: @user_invite.inviter, user_contact: @user_invite.invitee)
-    Contact.create(user: @user_invite.invitee, user_contact: @user_invite.inviter)
-    @user_invite.update(is_accepted: true)
+    ActiveRecord::Base.transaction do
+      Friend.create(user: @user_invite.inviter, friend: @user_invite.invitee)
+      Friend.create(user: @user_invite.invitee, friend: @user_invite.inviter)
+      Chat.create(user: @user_invite.invitee, contact: @user_invite.inviter)
+      @user_invite.update(is_accepted: true)
+    end
+
+    @chats = current_user.chats
     respond_to do |format|
       @received_invites = current_user.invites_received.where(is_accepted: [false, nil])
-      format.js { render 'messaging/user_invites/list_received', locals: { received_invites: @received_invites } }
+      format.js { render 'messaging/user_invites/update_received_invites_and_friends', locals: { received_invites: @received_invites, 
+                                                                                                 chats: @chats} }
     end
   end
 
@@ -67,5 +73,4 @@ class Messaging::UserInvitesController < Messaging::MessagingController
       format.js { render 'messaging/user_invites/list_received', locals: { received_invites: @received_invites } }
     end
   end
-
 end

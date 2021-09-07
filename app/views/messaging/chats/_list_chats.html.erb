@@ -3,7 +3,7 @@
     <% chats.each do |chat|%>
       <li>
         <%= link_to '#', 'data-turbolinks-track': 'reaload' do %>
-          <%= chat.name %> 
+          <%= chat.contact.id == current_user.id  ? chat.user.name : chat.contact.name %> 
         <% end %>
       </li>
     <% end %>
