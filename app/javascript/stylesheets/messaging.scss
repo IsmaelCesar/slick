@@ -2,6 +2,7 @@
 @import 'slick-generics'; 
 @import 'bootstrap'; 
 @import 'messaging/side_menu.scss';
+@import 'messaging/messages-list-container.scss';
 
 #side-menu { 
   width: 10%; 
@@ -78,6 +79,11 @@
 
 
       li:hover { 
+        width: 100%;
+        border-radius: 10px 0px 0px 10px;
+      }
+
+      li.active { 
         width: 100%;
         border-radius: 10px 0px 0px 10px;
       }

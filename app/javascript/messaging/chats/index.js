@@ -38,6 +38,22 @@
   });
 
   if(modal_container){
-    console.log('Applying mutation observer')
-    modal_container_observer.observe(modal_container, { childList: true })
+    console.log('Applying mutation observer');
+    modal_container_observer.observe(modal_container, { childList: true });
+  }
+
+  const buttons_select_chats  = document.querySelectorAll('.btn-select-chat');
+  if(buttons_select_chats){ 
+    buttons_select_chats.forEach((button)=> { 
+      button.addEventListener('click', ()=> {
+        let active_list_item = document.querySelector('li.active');
+        if(active_list_item){ 
+          active_list_item.classList.remove('active');
+        }
+
+        let parent_list_item = button.parentNode;
+        parent_list_item.classList.add('active');
+
+      })
+    });
   }

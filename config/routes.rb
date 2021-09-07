@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :messaging do
     get 'chats/index'
+    get 'chats/show/:id', to: 'chats#show', as: :show_chats
     post 'chats/create', as: :create_contact
 
     # new_user_invites

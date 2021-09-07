@@ -1,12 +1,16 @@
 <section class="messages-list-contaner">
   <section class="messages-list-header">
+    <h3><%= chat_contact.name %></h3>
   </section>
   <section class="messages-content-list">
+    <% messages.each do |message| %>
+      <%= render 'messaging/messages/message', message: message %>
+    <% end %>
   </section>
   <section class="messages-list-text-form">
-    <%= form_with method: :post, id: 'form-message-content' do |f| %>
+    <%= form_with method: :post, id: 'form-message-content', html: { 'data-remote': true }  do |f| %>
       <%= f.text_area :content, class: 'form-control' %>
-      <%= f.button class: 'btn btn-secondary', id: 'btn-send-message' do %>
+      <%= f.button class: 'btn', id: 'btn-send-message' do %>
           <i class="fas fa-paper-plane"></i>
       <% end %>
     <% end %>
