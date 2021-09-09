@@ -5,4 +5,5 @@
  * relative to contact
  */
 
-import '../../messaging/chats/index'
+import '../../messaging/chats/index';
+import './messages';

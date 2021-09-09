@@ -51,9 +51,7 @@
         let active_list_item = document.querySelector('li.active');
         if(active_list_item){ 
           active_list_item.classList.remove('active');
-          consumer.disconnect();
         }
-
         let parent_list_item = button.parentNode;
         let chat_id_field = parent_list_item.querySelector('#chat_id');
         parent_list_item.classList.add('active');
