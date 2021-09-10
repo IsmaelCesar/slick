@@ -5,21 +5,20 @@
  * the index page.
  */
 
-  import { Modal } from "bootstrap"
+  import { Modal } from "bootstrap";
   import { AjaxBuilder } from "../../packs/ajax_utils";
   import consumer from "../../channels/consumer";
-  import init_subscription_for_resource from "../../channels/messaging_channel"
+  import init_subscription_for_resource from "../../channels/messaging_channel";
+  import alertify from "alertifyjs";
 
   const ajax_builder = new AjaxBuilder();
   const modal_container = document.querySelector('#modal-container');
-
   const modal_container_observer = new MutationObserver(()=>{    
-    console.log('Mutated')
 
     let modal_new_invite = new Modal(document.querySelector('#modal-new-invite')); 
     modal_new_invite.show();
 
-    document.querySelector('#link-add-friend')?.addEventListener('click', (event)=>{
+    document.querySelector('#add-new-friend')?.addEventListener('click', (event)=>{
       event.preventDefault();
       let form_user_invite = document.querySelector('#form-user-invite'); 
       if(form_user_invite.checkValidity()){
@@ -27,9 +26,11 @@
         ajax_builder.post('/messaging/user_invites/create', 
                           Object.fromEntries(form_data), 
                           (data)=>{ 
-                            console.log(data)
+                            //new Modal(document.querySelector('#modal-new-invite')).hide();                             
+                            modal_new_invite.hide();
+                            alertify.success('Successfuly sent an invite');
                           }, (error)=>{
-                            console.log(error);
+                            alertify.error(error.message);
                           });
       }
       else{

@@ -12,7 +12,4 @@
  *
  *= require_tree .
  *= require_self
- *= require alertify
- *= require alertify/default
- *= require alertify/bootstrap
  */
