@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     delete 'user_invites/decline/:id', to: 'user_invites#decline', as: :decline_invite
 
     namespace :groups do 
-      get 'user_grops'
+      get 'user_groups'
       get 'available_groups'
     end
 

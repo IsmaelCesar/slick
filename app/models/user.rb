@@ -10,7 +10,7 @@ class User < ApplicationRecord
                     OR contact_id=#{id}")
   end
 
-  has_many :user_groups
+  has_many :groups
   has_many :invites_sent, class_name: 'UserInvite', foreign_key: 'user_invite_id'
   has_many :invites_received, class_name: 'UserInvite', foreign_key: 'user_invitee_id'
 
