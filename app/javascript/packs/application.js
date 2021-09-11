@@ -12,6 +12,8 @@ import "stylesheets/application"
 import "bootstrap";
 import "@popperjs/core";
 import "@fortawesome/fontawesome-free/css/all";
+import "alertifyjs/build/css/alertify.min";
+
 
 import "channels";
 

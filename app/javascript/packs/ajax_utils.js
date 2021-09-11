@@ -15,11 +15,9 @@
 
   get(url, success_callback = undefined, error_callback = undefined){ 
     fetch(url, { method: 'GET', headers: this.request_headers } )
-    .then((response) => { 
-      console.log('Response')
-      console.log(response)
-      if(!response.ok) throw new Error('Something went wrong')
-      return response.text(); 
+    .then((response) => {
+      if(!response.ok) throw response.json()
+      return response.json(); 
     })
     .then((data)=>{
       success_callback?.(data); 
@@ -41,14 +39,15 @@
                  body: JSON.stringify(data)
                 } )
     .then((response) => {
-      if(!response.ok) throw new Error(response.text())
-      return response.text(); 
-    })
-    .then((data)=>{
-      success_callback?.(data); 
+      if(!response.ok) throw response;
+      response.json().then((data)=>{
+        success_callback?.(data);
+      });
     })
     .catch( (error)=>{
-      error_callback?.(error)
+      error.json().then((data)=>{
+        error_callback?.(data);
+      });
     });
   }
 

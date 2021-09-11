@@ -29,7 +29,9 @@ class Messaging::ChatsController < Messaging::MessagingController
       @message = Message.new(content: params[:content], user: @user)
       @chat_message = ChatMessage.new(message: @message, chat: @chat)
       if @message.save && @chat_message.save
-        SendChatMessageJob.set(wait: 0.5.second).perform_later(@chat.id)
+        #SendChatMessageJob.set(wait: 0.5.second).perform_later(@chat.id)
+        ActionCable.server.broadcast "messaging/chat/#{@chat.id}",
+                                      message: render_chat_message(@chat_message)
       end
     end
   end
@@ -48,4 +50,9 @@ class Messaging::ChatsController < Messaging::MessagingController
     @chat = Chat.find(params[:id])
   end
 
+  def render_chat_message(message)
+    render(partial: 'messaging/messages/message',
+           locals: { message: message },
+           layout: false)
+  end
 end

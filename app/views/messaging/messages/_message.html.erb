@@ -1,4 +1,4 @@
-<section>
+<section class="message-content-container <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
   <section class="message-content">
     <p> 
       <%= message.content %>
@@ -15,6 +15,7 @@
       <% end %>
     </div>
     <div class="user-name">
+      <%= message.user.name %>
     </div>
   </section>
 </section>
