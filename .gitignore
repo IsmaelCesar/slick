@@ -33,7 +33,9 @@
 /config/master.key
 
 # Ignoring .yml files
-config/*.yml
+#config/*.yml
+config/application.yml
+config/database.yml
 bin/*
 
 /public/packs
