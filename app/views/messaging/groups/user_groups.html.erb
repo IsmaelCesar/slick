@@ -1,2 +1,30 @@
 <section class="groups-container">
+  <section class="group-option-list">
+    <% @user_groups.each do |group| %>
+      <%= link_to group, class: 'btn btn-outline-light' do %>
+        <div class="group-data">
+          <div class="group-image">
+            <% if group.group_image_url %>
+              <%= image_tag group.group_image_url, width: 50 %>
+            <% else %>
+              <i class="fas fa-image"></i>
+            <% end %>
+          </div>
+          <div class="group-name">
+            <%= group.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to '#' , class: 'btn btn-outline-light' do  %>
+      <div class="group-data">
+        <div class="group-image">
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="group-name">
+          Create new group
+        </div>
+      </div>
+    <% end %>
+  </section>
 </section>

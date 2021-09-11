@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2021_09_11_224423) do
     t.string "group_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_groups_on_user_id"
+    t.bigint "user_adm_id", null: false
+    t.index ["user_adm_id"], name: "index_groups_on_user_adm_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_224423) do
   add_foreign_key "chats", "users", column: "contact_id"
   add_foreign_key "friends", "users"
   add_foreign_key "friends", "users", column: "friend_id"
-  add_foreign_key "groups", "users"
+  add_foreign_key "groups", "users", column: "user_adm_id"
   add_foreign_key "text_channel_messages", "messages"
   add_foreign_key "text_channel_messages", "text_channels"
   add_foreign_key "text_channels", "groups"

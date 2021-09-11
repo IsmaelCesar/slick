@@ -22,7 +22,7 @@
         <i class="fas fa-users"> </i> Contacts
       <% end %>
     </section>
-    <% @user.groups.each do |group| %>
+    <% @user.user_groups.each do |group| %>
       <section class="messaging-group">
         <%= link_to group do %> 
           <i class="fas fa-users"> </i> Contacts
