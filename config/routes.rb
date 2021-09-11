@@ -33,6 +33,12 @@ Rails.application.routes.draw do
     post 'user_invites/create', as: :create_user_invite
     put 'user_invites/accept/:id', to: 'user_invites#accept', as: :accept_invite
     delete 'user_invites/decline/:id', to: 'user_invites#decline', as: :decline_invite
+
+    namespace :groups do 
+      get 'user_grops'
+      get 'available_groups'
+    end
+
   end
 
   root to: 'presentation/main#index'

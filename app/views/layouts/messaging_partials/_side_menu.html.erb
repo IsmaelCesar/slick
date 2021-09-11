@@ -18,7 +18,7 @@
   </section>
   <section> 
     <section class="messaging-group">
-      <%= link_to '#' do %> 
+      <%= link_to messaging_chats_index_path do %> 
         <i class="fas fa-users"> </i> Contacts
       <% end %>
     </section>
@@ -31,11 +31,11 @@
     <% end %>
     <section class="group-actions">
       <!-- <div class="group-item" title="Search groups" data-toggle="tooltip"> -->
-      <%= button_tag class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
+      <%= link_to  messaging_groups_available_groups_path , class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
         <i class="fas fa-search"></i>
       <% end %>
       <!-- <div class="group-item" title="Create group" data-toggle="tooltip"> -->
-      <%= button_tag class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
+      <%= link_to messaging_groups_user_grops_path , class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
         <i class="fas fa-plus"></i>
       <% end %>
     </seciton>
