@@ -15,4 +15,12 @@ class User < ApplicationRecord
   has_many :invites_sent, class_name: 'UserInvite', foreign_key: 'user_invite_id'
   has_many :invites_received, class_name: 'UserInvite', foreign_key: 'user_invitee_id'
 
+  def all_user_groups
+    # Returns all the groups the user participates or owns
+    Group
+      .left_joins(:user_groups, :user_adm)
+      .where("groups.user_adm_id=#{id}
+              OR user_groups.user_id=#{id}")
+  end
+
 end

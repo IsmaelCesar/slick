@@ -1,7 +1,7 @@
 <section class="groups-container">
   <section class="group-option-list">
     <% @user_groups.each do |group| %>
-      <%= link_to group, class: 'btn btn-outline-light' do %>
+      <%= link_to messaging_groups_show_path(group.id), class: 'btn btn-outline-light' do %>
         <div class="group-data">
           <div class="group-image">
             <% if group.group_image_url %>
@@ -16,7 +16,7 @@
         </div>
       <% end %>
     <% end %>
-    <%= link_to '#' , class: 'btn btn-outline-light' do  %>
+    <%= link_to messaging_groups_new_path , class: 'btn btn-outline-light' do  %>
       <div class="group-data">
         <div class="group-image">
           <i class="fas fa-plus"></i>

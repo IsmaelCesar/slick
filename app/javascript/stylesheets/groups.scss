@@ -11,6 +11,7 @@
     margin: auto;
     margin-top: 3em;
     display: flex;
+    justify-content: space-evenly;
   }
 
   .group-data{
@@ -25,5 +26,17 @@
       text-align: center;
     }
   } 
+
+  .group-form-container {
+    width: 70%;
+    margin: auto;
+    padding: 5em; 
+    
+    .group-form { 
+      div { 
+        margin-top: 1.5em;
+      }
+    }
+  }
 
 }

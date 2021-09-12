@@ -22,10 +22,10 @@
         <i class="fas fa-users"> </i> Contacts
       <% end %>
     </section>
-    <% @user.user_groups.each do |group| %>
+    <% @user.all_user_groups.each do |group| %>
       <section class="messaging-group">
-        <%= link_to group do %> 
-          <i class="fas fa-users"> </i> Contacts
+        <%= link_to messaging_groups_show_path(group.id) do %> 
+          <i class="fas fa-users"> </i> <%= group.name %>
         <% end %>
       </section>
     <% end %>
