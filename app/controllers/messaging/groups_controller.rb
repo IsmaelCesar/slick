@@ -1,6 +1,7 @@
 class Messaging::GroupsController < Messaging::MessagingController
 
   before_action :set_group, only: %i[edit show]
+  before_action :set_current_user 
 
   def new
     @group = Group.new
@@ -14,7 +15,7 @@ class Messaging::GroupsController < Messaging::MessagingController
 
   def create 
     @group = Group.new(group_params)
-    @group.user_adm = current_user
+    @group.user_adm = @current_user
     if @group.save!
       @group.reload
       redirect_to messaging_groups_show_path(@group.id)
@@ -43,4 +44,9 @@ class Messaging::GroupsController < Messaging::MessagingController
   def set_group
     @group = Group.find(params[:id])
   end
+
+  def set_current_user
+    @current_user = current_user
+  end
+
 end

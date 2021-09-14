@@ -1,1 +1,24 @@
-<h1><%= @group.name %></h1>
+<section class="group-content-container">
+  <aside class="group-side-menu">
+    <header>
+      <h3>
+        <%= @group.name %>
+        <% if @group.user_adm.id = @current_user.id %>
+          <i class="fas fa-cog" title="Edit group data" data-toggle="popover"></i>
+        <% end %>
+      </h3>
+    </header>
+    <ul>
+      <% if @group.user_adm.id = @current_user.id %>
+        <li>
+          <%= link_to '#', class: 'btn btn-sm btn-outline-light text-channel-button' do  %>
+            <i class="fas fa-plus"></i> Create new text channel
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+  <aside class="group-menu-selection-content">
+
+  </aside>
+</section>
