@@ -10,6 +10,23 @@ class Messaging::TextChannelController < Messaging::MessagingController
     end
   end
 
+
+  def show
+    @text_channel = TextChannel.find(params[:id])
+
+    @messages = @text_channel.text_channel_messages
+    respond_to do |format|
+      format.js { render 'messaging/text_channel/show',
+                  locals: {
+                            messages: @messages,
+                            current_user: @current_user,
+                            resource_header: @text_channel.name,
+                            resource_url: messaging_send_text_channel_message_path(@text_channel.id)
+                          }
+                }
+    end
+  end
+
   def edit
   end
 

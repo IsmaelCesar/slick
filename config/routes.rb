@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-=begin
-  namespace :messaging do
-    get 'text_channel/new'
-    get 'text_channel/edit'
-    get 'text_channel/create'
-    get 'text_channel/update'
-    get 'text_channel/destroy'
-  end
-=end
-
   mount ActionCable.server => '/cable'
 
   namespace :presentation do
@@ -51,9 +41,9 @@ Rails.application.routes.draw do
     get 'groups/user_groups'
     get 'groups/available_groups'
 
-
     resources :text_channel
 
+    get 'text_channel/:id/send_text_channel_message', to: 'text_channel_messages#sent_text_channel_messages', as: :send_text_channel_message
   end
 
   root to: 'presentation/main#index'

@@ -1,0 +1,11 @@
+<% text_channel_messages = j render partial: 'messaging/messages/message_content', locals: {  messages: messages,
+                                                                                              current_user: current_user, 
+                                                                                              resource_header: resource_header,
+                                                                                              resource_url: resource_url
+                                                                                            }  %>
+(function (){
+  let group_menu_selection_content = document.querySelector('.group-menu-selection-content');
+  if(group_menu_selection_content){
+    group_menu_selection_content.innerHTML = '<%= text_channel_messages %>'
+  }
+}).call(this)

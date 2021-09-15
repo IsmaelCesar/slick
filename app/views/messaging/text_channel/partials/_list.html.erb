@@ -1,7 +1,7 @@
 <ul>
   <% group.text_channels.each do |text_channel|  %>
     <li>
-      <%= link_to "#", class: 'btn btn-sm btn-outline-light text-channel-button' do %>
+      <%= link_to messaging_text_channel_path(text_channel), remote: true, class: 'btn btn-sm btn-outline-light text-channel-button' do %>
         # <%= text_channel.name %>
       <% end %>
     </li>
