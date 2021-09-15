@@ -6,3 +6,6 @@
 
 // CSS files
 import "stylesheets/groups";
+import "groups/show";
+import alertify from "alertifyjs";
+window.alertify = alertify; 

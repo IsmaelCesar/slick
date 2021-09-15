@@ -1,0 +1,16 @@
+<ul>
+  <% group.text_channels.each do |text_channel|  %>
+    <li>
+      <%= link_to "#", class: 'btn btn-sm btn-outline-light text-channel-button' do %>
+        # <%= text_channel.name %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if group.user_adm.id = current_user.id %>
+    <li>
+      <%= link_to new_messaging_text_channel_path(group_id: group.id), class: 'btn btn-sm btn-outline-light text-channel-button', remote: true do  %>
+        <i class="fas fa-plus"></i> Create new text channel
+      <% end %>
+    </li>
+  <% end %>
+</ul>

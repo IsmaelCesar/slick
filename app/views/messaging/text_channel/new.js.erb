@@ -1,0 +1,7 @@
+<% new_text_channel = j render partial: 'messaging/text_channel/partials/new', locals: { text_channel: text_channel }, layout: false %>
+(function (){
+  let modal_container = document.querySelector('#modal-container');
+  if(modal_container) {
+    modal_container.innerHTML = '<%= new_text_channel %>';
+  } 
+}).call(this); 

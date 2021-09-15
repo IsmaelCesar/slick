@@ -8,15 +8,11 @@
         <% end %>
       </h3>
     </header>
-    <ul>
-      <% if @group.user_adm.id = @current_user.id %>
-        <li>
-          <%= link_to '#', class: 'btn btn-sm btn-outline-light text-channel-button' do  %>
-            <i class="fas fa-plus"></i> Create new text channel
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="text-channel-list">
+      <%= render 'messaging/text_channel/partials/list', group: @group, current_user: @current_user %>
+    </div>
+    <div id="modal-container">
+    </div>
   </aside>
   <aside class="group-menu-selection-content">
 
