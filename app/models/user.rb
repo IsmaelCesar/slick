@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :owned_groups, class_name: 'Group', foreign_key: 'user_adm_id'
   has_many :user_groups
+  has_many :friends
   has_many :invites_sent, class_name: 'UserInvite', foreign_key: 'user_invite_id'
   has_many :invites_received, class_name: 'UserInvite', foreign_key: 'user_invitee_id'
 

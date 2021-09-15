@@ -17,6 +17,11 @@
               <i class="fas fa-user-plus"></i> Add friend
           <% end %>
         </li>
+        <li>
+          <%= link_to  messaging_friends_index_path, id: 'link-list-friends', remote: true do %>
+              <i class="fas fa-users"></i> My Friends
+          <% end %>
+        </li>
       </ul>
     </nav>
   </section>

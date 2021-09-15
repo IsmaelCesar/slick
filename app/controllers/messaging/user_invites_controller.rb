@@ -48,9 +48,9 @@ class Messaging::UserInvitesController < Messaging::MessagingController
   def accept
     @user_invite = UserInvite.find(params[:id])
     ActiveRecord::Base.transaction do
-      Friend.create(user: @user_invite.inviter, friend: @user_invite.invitee)
-      Friend.create(user: @user_invite.invitee, friend: @user_invite.inviter)
-      Chat.create(user: @user_invite.invitee, contact: @user_invite.inviter)
+      @chat = Chat.create(user: @user_invite.invitee, contact: @user_invite.inviter)
+      Friend.create(user: @user_invite.inviter, friend: @user_invite.invitee, chat: @chat)
+      Friend.create(user: @user_invite.invitee, friend: @user_invite.inviter, chat: @chat)
       @user_invite.update(is_accepted: true)
     end
 
