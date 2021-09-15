@@ -1,7 +1,8 @@
 <ul>
   <% group.text_channels.each do |text_channel|  %>
     <li>
-      <%= link_to messaging_text_channel_path(text_channel), remote: true, class: 'btn btn-sm btn-outline-light text-channel-button' do %>
+      <%= link_to messaging_text_channel_path(text_channel), remote: true, class: 'btn btn-sm btn-outline-light text-channel-button text-channel-option' do %>
+        <%= hidden_field_tag :text_channel_id, text_channel.id %>
         # <%= text_channel.name %>
       <% end %>
     </li>
