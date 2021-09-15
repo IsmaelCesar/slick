@@ -5,6 +5,7 @@ class Messaging::ChatsController < Messaging::MessagingController
   def index
     @user = current_user
     @chats = @user.chats
+    @friends = @user.friends
     respond_to do |format|
       format.html
       format.js { render 'messaging/contacts/list_chats', locals: { chats: @chats } }
