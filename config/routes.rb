@@ -34,6 +34,12 @@ Rails.application.routes.draw do
     put 'user_invites/accept/:id', to: 'user_invites#accept', as: :accept_invite
     delete 'user_invites/decline/:id', to: 'user_invites#decline', as: :decline_invite
 
+    # Group invites
+    get 'group_invites/new'
+    get 'group_invites/create'
+    put 'group_invites/accept/:id', to: 'group_invites#accept', as: :accept_group_invite
+    delete 'group_invites/decline/:id', to: 'group_invites#decline', as: :decline_group_invite
+
     # Friends
     get 'friends/index'
 

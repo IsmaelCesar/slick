@@ -3,5 +3,8 @@
   let modal_container = document.querySelector('#modal-container');
   if(modal_container) {
     modal_container.innerHTML = '<%= new_text_channel %>';
+    let modal_new_text_channel_element = document.querySelector('.modal-new-text-channel');
+    let modal_new_text_channel = new Modal(modal_new_text_channel_element); 
+    modal_new_text_channel.show();
   } 
 }).call(this); 

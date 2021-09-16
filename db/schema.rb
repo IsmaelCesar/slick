@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_231207) do
+ActiveRecord::Schema.define(version: 2021_09_16_214921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2021_09_15_231207) do
     t.bigint "chat_id", null: false
     t.index ["chat_id"], name: "index_friends_on_chat_id"
     t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
+  create_table "group_invites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.boolean "is_accepted", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_invites_on_group_id"
+    t.index ["user_id"], name: "index_group_invites_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -131,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_09_15_231207) do
   add_foreign_key "chats", "users", column: "contact_id"
   add_foreign_key "friends", "users"
   add_foreign_key "friends", "users", column: "friend_id"
+  add_foreign_key "group_invites", "groups"
+  add_foreign_key "group_invites", "users"
   add_foreign_key "groups", "users", column: "user_adm_id"
   add_foreign_key "text_channel_messages", "messages"
   add_foreign_key "text_channel_messages", "text_channels"

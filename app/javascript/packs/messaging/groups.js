@@ -8,4 +8,6 @@
 import "stylesheets/groups";
 import "messaging/groups/show";
 import alertify from "alertifyjs";
+import { Modal } from "bootstrap";
+window.Modal = Modal;
 window.alertify = alertify; 

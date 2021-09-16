@@ -1,0 +1,21 @@
+<div class="modal fade modal-new-group-invite" ariaLabeledBy=".modal-new-group-invite" tab-index="-1"> 
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <%= form_with model: user, url: messaging_group_invites_create_path do |f| %>
+        <div class="modal-body">
+          <%= f.text_field :email, placeholder: 'user email' %>
+        </div>
+        <div class="modal-footer">
+          <%= f.button class: 'btn btn-danger', 'data-bs-dismiss': 'modal' do %> 
+            <i class="fas fa-times"></i> Close
+          <% end %>
+          <%= f.button class: 'btn btn-danger', 'data-bs-dismiss': 'modal' do %> 
+            <i class="fas fa-share"></i> Send inite
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
