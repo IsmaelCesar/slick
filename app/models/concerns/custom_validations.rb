@@ -17,4 +17,12 @@ module CustomValidations
     end
   end
 
+  class UserInviteeDifferentFromOwner < ActiveModel::Validator
+    def validate(record)
+      if record.user.id == record.group.user_adm.id
+        record.errors.add :user, 'invitee cannot be same as group owner'
+      end
+    end
+  end
+
 end

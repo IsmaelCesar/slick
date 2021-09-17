@@ -1,7 +1,8 @@
-<% form_new = j render partial: 'messaging/group_invites/partials/form_new', locals: { user: user }, layout: false %>
+<% form_new = j render partial: 'messaging/group_invites/partials/form_new', locals: { user: user, group: group }, layout: false %>
 (function (){
   let modal_container = document.querySelector('#modal-container');
   if(modal_container){
+    modal_container.innerHTML = '<%= form_new %>'
     let modal_new_group_invite_element = document.querySelector('.modal-new-group-invite');
     let modal_new_group_invite = new Modal(modal_new_group_invite_element);
     modal_new_group_invite.show();

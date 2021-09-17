@@ -1,7 +1,7 @@
 <section class="groups-container">
   <div class="group-form-container">
     <%= form_with model: @group, url: messaging_groups_create_path, html: { class: 'group-form'} do |f| %>
-      <%= render 'messaging/groups/group_form_fields', group: @group, form_bulder: f %>
+      <%= render 'messaging/groups/partials/group_form_fields', group: @group, form_bulder: f %>
       <div>
         <%= f.submit class: 'btn btn-xlg btn-outline-light' do %>
           <i class="fas fa-plus"></i> Create new group

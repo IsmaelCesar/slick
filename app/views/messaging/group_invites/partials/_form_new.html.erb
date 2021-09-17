@@ -3,15 +3,15 @@
     <div class="modal-content">
       <div class="modal-header">
       </div>
-      <%= form_with model: user, url: messaging_group_invites_create_path do |f| %>
+      <%= form_with model: user, url: messaging_group_invites_create_path(group.id), html: { 'data-remote': true } do |f| %>
         <div class="modal-body">
-          <%= f.text_field :email, placeholder: 'user email' %>
+          <%= f.email_field :email, placeholder: 'user email', class: 'form-control', required: true %>
         </div>
         <div class="modal-footer">
-          <%= f.button class: 'btn btn-danger', 'data-bs-dismiss': 'modal' do %> 
+          <%= f.button class: 'btn btn-outline-danger', 'data-bs-dismiss': 'modal' do %> 
             <i class="fas fa-times"></i> Close
           <% end %>
-          <%= f.button class: 'btn btn-danger', 'data-bs-dismiss': 'modal' do %> 
+          <%= f.button class: 'btn btn-outline-success', 'data-bs-dismiss': 'modal' do %> 
             <i class="fas fa-share"></i> Send inite
           <% end %>
         </div>
