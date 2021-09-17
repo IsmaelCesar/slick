@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     delete 'user_invites/decline/:id', to: 'user_invites#decline', as: :decline_invite
 
     # Group invites
-    get 'group_invites/new'
-    get 'group_invites/create'
+    get ':group_id/group_invites/new', to: 'group_invites#new', as: :group_invites_new
+    post ':group_id/group_invites/create', to: 'group_invites#create', as: :group_invites_create
     put 'group_invites/accept/:id', to: 'group_invites#accept', as: :accept_group_invite
     delete 'group_invites/decline/:id', to: 'group_invites#decline', as: :decline_group_invite
 
