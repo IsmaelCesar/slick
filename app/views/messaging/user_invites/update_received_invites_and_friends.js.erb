@@ -1,4 +1,4 @@
-<% invites_list = j render partial: 'messaging/user_invites/list_received', locals: { received_invites: received_invites } %>
+<% invites_list = j render partial: 'messaging/user_invites/list_received', locals: { received_invites: received_invites, group_invites: group_invites } %>
 <% list_chats = j render partial: 'messaging/chats/list_chats', locals: { chats: chats } %>
 (function (){
   let messaging_chat_content = document.querySelector('.messaging-chat-content');
@@ -11,4 +11,4 @@
     listing_chats.innerHTML = '<%= list_chats %>'
   }
 
-})()
+}).call(this);
