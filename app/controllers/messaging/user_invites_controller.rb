@@ -82,7 +82,14 @@ class Messaging::UserInvitesController < Messaging::MessagingController
     @user_invite.delete
     respond_to do |format|
       @received_invites = current_user.invites_received.where(is_accepted: true)
-      format.js { render 'messaging/user_invites/list_received', locals: { received_invites: @received_invites } }
+      @group_invites = current_user.group_invites
+      format.js do
+        render 'messaging/user_invites/list_received',
+               locals: {
+                 received_invites: @received_invites,
+                 group_invites: @group_invites
+               }
+      end
     end
   end
 end

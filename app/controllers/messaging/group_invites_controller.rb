@@ -1,4 +1,6 @@
-class Messaging::GroupInvitesController < ApplicationController
+class Messaging::GroupInvitesController < Messaging::MessagingController
+
+  before_action :set_current_user, only: [:accept, :decline]
 
   # [GET] /group_invites/new
   def new
@@ -36,21 +38,54 @@ class Messaging::GroupInvitesController < ApplicationController
     respond_to do |format|
       format.js  { render js: "alertify.#{@is_succesful ? 'success' : 'error'}('#{@message}');"}
     end
-    
+
   end
 
   # [PUT] /group_invites/accept/:id
   def accept
+    @group_invite = GroupInvite.find(params[:id])
+    @group = @group_invite.group
+    @user  = @group_invite.user
+    ActiveRecord::Base.transaction do
+      UserGroup.create!(user: @user, group: @group)
+      @group_invite.update(is_accepted: true)
+    end
+    respond_to do |format|
+      format.js do
+        render 'messaging/group_invites/accept',
+               locals: {
+                 user_invites: @current_user.invites_received,
+                 group_invites: @current_user.group_invites
+               }
+      end
+    end
   end
 
   # [DELETE] /group_invites/decline/:id
   def decline
+    @group_invite = GroupInvite.find(params[:id])
+    ActiveRecord::Base.transaction do
+      @group_invite.delete!
+    end
+    respond_to do |format|
+      format.js do
+        render 'messaging/group_invites/decline',
+               locals: {
+                 user_invites: @current_user.received_invites,
+                 group_invites: @current_user.group_invites
+               }
+      end
+    end
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def set_current_user
+    @current_user = current_user
   end
 
 end
