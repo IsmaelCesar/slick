@@ -3,7 +3,7 @@
     <header>
       <h3>
         <%= @group.name %>
-        <% if @group.user_adm.id = @current_user.id %>
+        <% if @group.user_adm.id == @current_user.id %>
           <%= button_tag class: 'btn btn-sm btn-outline-light btn-toggle-group-actions', 
                          type: 'button' do %>
             <i class="fas fa-cog"></i>

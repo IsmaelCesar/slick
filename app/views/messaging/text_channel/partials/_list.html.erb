@@ -10,7 +10,7 @@
         </div>
       </li>
     <% end %>
-  <% if group.user_adm.id = current_user.id %>
+  <% if group.user_adm.id == current_user.id %>
     <li>
       <div class="d-grid gap-2">
         <%= link_to new_messaging_text_channel_path(group_id: group.id), class: 'btn btn-sm btn-outline-light text-channel-button', remote: true do  %>
