@@ -54,7 +54,7 @@ class Messaging::GroupInvitesController < Messaging::MessagingController
       format.js do
         render 'messaging/group_invites/accept',
                locals: {
-                 user_invites: @current_user.invites_received,
+                 received_invites: @current_user.invites_received,
                  group_invites: @current_user.group_invites
                }
       end
@@ -65,13 +65,13 @@ class Messaging::GroupInvitesController < Messaging::MessagingController
   def decline
     @group_invite = GroupInvite.find(params[:id])
     ActiveRecord::Base.transaction do
-      @group_invite.delete!
+      @group_invite.delete
     end
     respond_to do |format|
       format.js do
         render 'messaging/group_invites/decline',
                locals: {
-                 user_invites: @current_user.received_invites,
+                 received_invites: @current_user.invites_received,
                  group_invites: @current_user.group_invites
                }
       end

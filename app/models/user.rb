@@ -20,9 +20,10 @@ class User < ApplicationRecord
   def all_user_groups
     # Returns all the groups the user participates or owns
     Group
-      .left_joins(:user_groups, :user_adm)
-      .where("groups.user_adm_id=#{id}
-              OR user_groups.user_id=#{id}")
+      .left_joins(:user_adm)
+      .left_joins(:user_groups)
+      .where("groups.user_adm_id = #{id}
+              OR user_groups.user_id = #{id}")
   end
 
 end
