@@ -6,7 +6,7 @@
  */
 
   import { Modal } from "bootstrap";
-import consumer from "../../channels/consumer";
+  import consumer from "../../channels/consumer";
   import init_subscription_for_resource from "../../channels/messaging_channel";
   
   document.querySelectorAll('.text-channel-option').forEach((text_channel_option)=>{

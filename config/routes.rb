@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
     resources :text_channel
 
-    get 'text_channel/:id/send_text_channel_message', to: 'text_channel_messages#sent_text_channel_messages', as: :send_text_channel_message
+    post 'text_channel/:id/send_text_channel_message', to: 'text_channel_messages#send_text_channel_message', as: :send_text_channel_message
   end
 
   root to: 'presentation/main#index'

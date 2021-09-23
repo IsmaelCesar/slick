@@ -1,5 +1,7 @@
 class Messaging::ChatsController < Messaging::MessagingController
 
+  include Messaging::MessagesHelper
+
   before_action :set_chat, only: %i[ show send_message]
 
   def index
@@ -17,9 +19,15 @@ class Messaging::ChatsController < Messaging::MessagingController
     @chat_contact = @chat.get_contact(current_user)
     @chat_messages = @chat.chat_messages.limit(20)
     respond_to do |format|
-      format.js { render 'messaging/chats/show', locals: { messages: @chat_messages,
-                                                           chat: @chat, 
-                                                           chat_contact: @chat_contact} }
+      format.js do
+        render 'messaging/chats/show',
+               locals: {
+                 messages: @chat_messages,
+                 chat: @chat,
+                 chat_contact: @chat_contact,
+                 messages_container_id: "chat-#{@chat.id}"
+               }
+      end
     end
   end
 
@@ -30,9 +38,10 @@ class Messaging::ChatsController < Messaging::MessagingController
       @message = Message.new(content: params[:content], user: @user)
       @chat_message = ChatMessage.new(message: @message, chat: @chat)
       if @message.save && @chat_message.save
-        #SendChatMessageJob.set(wait: 0.5.second).perform_later(@chat.id)
         ActionCable.server.broadcast "messaging/chat/#{@chat.id}",
-                                      message: render_chat_message(@chat_message)
+                                     message: render_message(@chat_message),
+                                     messages_container_id: "chat-#{@chat.id}"
+
       end
     end
   end
@@ -49,11 +58,5 @@ class Messaging::ChatsController < Messaging::MessagingController
 
   def set_chat
     @chat = Chat.find(params[:id])
-  end
-
-  def render_chat_message(message)
-    render(partial: 'messaging/messages/message',
-           locals: { message: message },
-           layout: false)
   end
 end

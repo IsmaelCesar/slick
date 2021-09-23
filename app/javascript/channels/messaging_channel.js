@@ -13,8 +13,13 @@ export default function init_subscription_for_resource(consumer, resource_name, 
     },
 
     received(data) {
-      let messages_content_list = document.querySelector('.messages-content-list');
-      messages_content_list.innerHTML += data['message']; 
+      let messages_content_list = document.querySelector(`#${data['messages_container_id']}`);
+      if(messages_content_list){
+        messages_content_list.innerHTML += data['message']; 
+      }
+      else{
+        console.error('Container: ', data['messages_container_id'], 'not found'); 
+      }
     }
   });
 }

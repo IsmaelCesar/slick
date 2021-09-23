@@ -2,7 +2,7 @@
   <section class="messages-list-header">
     <h3><%= resource_header %></h3>
   </section>
-  <section class="messages-content-list">
+  <section class="messages-content-list" id="<%= messages_container_id %>">
     <% messages.each do |message| %>
       <%= render 'messaging/messages/message', message: message %>
     <% end %>

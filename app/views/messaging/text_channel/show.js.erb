@@ -1,6 +1,7 @@
 <% text_channel_messages = j render partial: 'messaging/messages/message_content', locals: {  messages: messages,
                                                                                               current_user: current_user, 
                                                                                               resource_header: resource_header,
+                                                                                              messages_container_id: messages_container_id,
                                                                                               resource_url: resource_url
                                                                                             }  %>
 (function (){

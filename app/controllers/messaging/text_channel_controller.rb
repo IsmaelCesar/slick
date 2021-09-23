@@ -16,14 +16,16 @@ class Messaging::TextChannelController < Messaging::MessagingController
 
     @messages = @text_channel.text_channel_messages
     respond_to do |format|
-      format.js { render 'messaging/text_channel/show',
-                  locals: {
-                            messages: @messages,
-                            current_user: @current_user,
-                            resource_header: @text_channel.name,
-                            resource_url: messaging_send_text_channel_message_path(@text_channel.id)
-                          }
-                }
+      format.js do
+        render 'messaging/text_channel/show',
+               locals: {
+                 messages: @messages,
+                 current_user: @current_user,
+                 resource_header: @text_channel.name,
+                 messages_container_id: "text-channel-#{@text_channel.id}",
+                 resource_url: messaging_send_text_channel_message_path(@text_channel.id)
+               }
+      end
     end
   end
 
@@ -35,9 +37,13 @@ class Messaging::TextChannelController < Messaging::MessagingController
     respond_to do |format|
       if @new_text_channel.save
         @new_text_channel.reload
-        format.js { render 'messaging/text_channel/create',
-                    locals: { group: @new_text_channel.group,
-                              current_user: @current_user } }
+        format.js do
+          render 'messaging/text_channel/create',
+                 locals: {
+                   group: @new_text_channel.group,
+                   current_user: @current_user
+                 }
+        end
       else
         format.js { render js: "alertify.error('#{@new_text_channel.errors.full_messages.join('\n')}')"}
       end
