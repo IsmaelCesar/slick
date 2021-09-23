@@ -45,6 +45,17 @@
     modal_container_observer.observe(modal_container, { childList: true });
   }
 
+  /**
+   * @author Ismael Cesar <leamscesar@gmail.com>
+   * 
+   * disconnects the channel
+   * 
+   * @param {*} channel 
+   */
+  function disconnect_channel(channel){
+
+  }
+
   const buttons_select_chats  = document.querySelectorAll('.btn-select-chat');
   if(buttons_select_chats){ 
     buttons_select_chats.forEach((button)=> { 
@@ -54,9 +65,17 @@
           active_list_item.classList.remove('active');
         }
         let parent_list_item = button.parentNode;
-        let chat_id_field = parent_list_item.querySelector('#chat_id');
         parent_list_item.classList.add('active');
-        consumer.chat_messages = init_subscription_for_resource(consumer, 'chat', chat_id_field.value);
       })
+
+      let parent_list_item = button.parentNode;
+      let chat_id_field = parent_list_item.querySelector('#chat_id');
+      
+      let chat_message_channel = init_subscription_for_resource(consumer, 'chat', chat_id_field.value);
+
+      window.addEventListener('unload', ()=>{
+        console.log("Unloaded")
+        chat_message_channel.unsubscribe();
+      });
     });
   }
