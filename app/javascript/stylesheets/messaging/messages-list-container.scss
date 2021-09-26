@@ -27,17 +27,22 @@
     // Message content styling
     .message-content-container{
       display: flex;
-      justify-content: space-between;      
+      justify-content: right;
       width: 90%;
       margin: 1.5em auto;
       
 
       .message-content{
-        width: 50em;
+        width: fit-content;
         height: 30%;
         padding: 1em;
         border: 1px solid $slick-main-color;
         //border-radius: 0px 30px 30px 30px;
+      }
+
+      .user-data{
+        margin-left: 10px;
+        margin-right: 10px;
       }
 
       .user-data .user-image {
@@ -60,6 +65,7 @@
 
     .message-content-container.contact-message{
       flex-direction: row-reverse;
+      justify-content: left;
       .message-content{
         border-radius: 0px 30px 30px 30px;
       }
