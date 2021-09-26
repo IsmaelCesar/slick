@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :messaging do
     get 'chats/index'
+    get 'chats/current_user_chat_ids', to: 'chats#current_user_chat_ids', as: :current_user_chat_ids
     get 'chats/show/:id', to: 'chats#show', as: :show_chats
     post 'chats/send_message/:id', to: 'chats#send_message', as: :send_message
     post 'chats/create', as: :create_contact
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     get 'friends/index'
 
     get 'groups/new'
+    get 'groups/current_user_text_channel_ids', to: 'groups#current_user_text_channel_ids', as: :current_user_text_channel_ids
     get 'groups/edit/:id', to: 'groups#edit', as: :groups_edit
     get 'groups/show/:id', to: 'groups#show', as: :groups_show
     post 'groups/create'

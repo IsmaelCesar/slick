@@ -116,12 +116,10 @@ ActiveRecord::Schema.define(version: 2021_09_16_214921) do
 
   create_table "user_invites", force: :cascade do |t|
     t.boolean "is_accepted", default: false
-    t.bigint "user_invite_id", null: false
-    t.bigint "user_invitee_id", null: false
+    t.integer "user_invite_id", null: false
+    t.integer "user_invitee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_invite_id"], name: "index_user_invites_on_user_invite_id"
-    t.index ["user_invitee_id"], name: "index_user_invites_on_user_invitee_id"
   end
 
   create_table "users", force: :cascade do |t|
