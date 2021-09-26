@@ -5,3 +5,4 @@
 
 import 'bootstrap';
 import 'stylesheets/messaging';
+import './messaging_utils';

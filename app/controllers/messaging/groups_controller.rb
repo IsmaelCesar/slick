@@ -27,6 +27,20 @@ class Messaging::GroupsController < Messaging::MessagingController
   def destroy
   end
 
+  # [GET] groups/current_user_text_channel_ids
+  def current_user_text_channel_ids
+    text_channel_ids = []
+    current_user.all_user_groups.each do |group|
+      group.text_channels.each do |text_channel|
+        text_channel_ids.append text_channel.id
+      end
+    end
+
+    respond_to do |format|
+      format.json { render json: text_channel_ids }
+    end
+  end
+
   def user_groups
     @user_groups = current_user.owned_groups
   end

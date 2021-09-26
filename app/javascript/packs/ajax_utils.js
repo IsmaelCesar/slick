@@ -16,18 +16,15 @@
   get(url, success_callback = undefined, error_callback = undefined){ 
     fetch(url, { method: 'GET', headers: this.request_headers } )
     .then((response) => {
-      if(!response.ok) throw response.json()
-      return response.json(); 
-    })
-    .then((data)=>{
-      success_callback?.(data); 
+      if(!response.ok) throw response;
+      response.json().then((data)=>{
+        success_callback?.(data);
+      });
     })
     .catch( (error)=>{
-      console.log('Error'); 
-      console.log(error);
-      return error.json();
-    }).then((data)=>{
-      error_callback?.(data)
+      error.json().then((data)=>{
+        error_callback?.(data);
+      })
     });
   }
 

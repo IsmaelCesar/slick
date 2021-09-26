@@ -7,8 +7,6 @@
 
   import { Modal } from "bootstrap";
   import { AjaxBuilder } from "../../packs/ajax_utils";
-  import consumer from "../../channels/consumer";
-  import init_subscription_for_resource from "../../channels/messaging_channel";
   import alertify from "alertifyjs";
 
   const ajax_builder = new AjaxBuilder();
@@ -67,15 +65,6 @@
         let parent_list_item = button.parentNode;
         parent_list_item.classList.add('active');
       })
-
-      let parent_list_item = button.parentNode;
-      let chat_id_field = parent_list_item.querySelector('#chat_id');
-      
-      let chat_message_channel = init_subscription_for_resource(consumer, 'chat', chat_id_field.value);
-
-      window.addEventListener('unload', ()=>{
-        console.log("Unloaded")
-        chat_message_channel.unsubscribe();
-      });
+     
     });
   }

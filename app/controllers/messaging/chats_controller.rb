@@ -46,6 +46,13 @@ class Messaging::ChatsController < Messaging::MessagingController
     end
   end
 
+  # [GET] chats/current_user_chat_ids
+  def current_user_chat_ids
+    respond_to do |format|
+      format.json { render json: { chat_ids: current_user.chats.ids }  } 
+    end
+  end
+
   # [GET]  messaging/contacts/new_contact
   def new_contact
   end
