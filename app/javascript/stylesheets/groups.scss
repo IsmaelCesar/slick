@@ -40,6 +40,16 @@
     }
   }
 
+  .group-item-container{
+    border: 1px solid white; 
+    border-radius: 10px;
+    width: 12em; 
+    height: 12em;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+
 }
 
 .group-content-container { 

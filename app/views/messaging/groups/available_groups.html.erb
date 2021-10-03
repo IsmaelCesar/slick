@@ -1,7 +1,7 @@
 <section class="groups-container">
   <div class="group-option-list">
     <% @groups.each do |group| %>
-      <%= link_to messaging_groups_show_path(group.id), class: 'btn btn-outline-light' do %>
+      <div class="group-item-container">
         <div class="group-data">
           <div class="group-image">
             <% if group.group_image_url %>
@@ -13,8 +13,11 @@
           <div class="group-name">
             <%= group.name %>
           </div>
+          <%= button_tag class: 'btn btn-lg btn-outline-light' do %>
+            <i class="fas fa-sign-in-alt"></i>Join
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </section>
