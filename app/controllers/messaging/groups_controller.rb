@@ -12,7 +12,7 @@ class Messaging::GroupsController < Messaging::MessagingController
 
   # [PUT] /messaging/groups/update/:id
   def update
-    if current_user.id == @group.user_adm.id
+    if @current_user.id == @group.user_adm.id
       if @group.update(group_params)
         redirect_to messaging_groups_show_path(@group)
       end
@@ -35,7 +35,7 @@ class Messaging::GroupsController < Messaging::MessagingController
 
   # [DELETE] /messaging/groups/delete/:id
   def destroy
-    if current_user.id == @group.user_adm.id
+    if @current_user.id == @group.user_adm.id
       if @group.delete
         redirect_to messaging_chats_index_path
       end
@@ -61,7 +61,7 @@ class Messaging::GroupsController < Messaging::MessagingController
   end
 
   def available_groups
-    @groups = Group.all
+    @groups = Group.where('user_adm_id != :user_adm_id', {user_adm_id: @current_user.id})
   end
 
   private

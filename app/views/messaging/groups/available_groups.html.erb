@@ -1,3 +1,20 @@
 <section class="groups-container">
-  
+  <div class="group-option-list">
+    <% @groups.each do |group| %>
+      <%= link_to messaging_groups_show_path(group.id), class: 'btn btn-outline-light' do %>
+        <div class="group-data">
+          <div class="group-image">
+            <% if group.group_image_url %>
+              <%= image_tag group.group_image_url, width: 50 %>
+            <% else %>
+              <i class="fas fa-image"></i>
+            <% end %>
+          </div>
+          <div class="group-name">
+            <%= group.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </section>

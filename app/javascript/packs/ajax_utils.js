@@ -32,14 +32,18 @@
     fetch(url, { method: 'DELETE', headers: this.request_headers } )
     .then((response) => {
       if(!response.ok) throw response;
-      response.json().then((data)=>{
-        success_callback?.(data);
-      });
+      if(this.request_headers.Accept === 'application/json'){
+        response.json().then((data)=>{
+          success_callback?.(data);
+        });
+      }
     })
     .catch( (error)=>{
-      error.json().then((data)=>{
-        error_callback?.(data);
-      })
+      if(this.request_headers.Accept === 'application/json'){
+        error.json().then((data)=>{
+          error_callback?.(data);
+        })
+      }
     });
   }
 
