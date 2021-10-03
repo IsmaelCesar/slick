@@ -16,6 +16,10 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       let messages_content_list = document.querySelector(`#${data['messages_container_id']}`);
       if(messages_content_list){
         messages_content_list.innerHTML += data['message']; 
+        let latest_message = messages_content_list.lastChild
+        if (latest_message){
+          messages_content_list.scroll({ top: latest_message.offsetTop })
+        }
       }
       else{
         console.error('Container: ', data['messages_container_id'], 'not found'); 
