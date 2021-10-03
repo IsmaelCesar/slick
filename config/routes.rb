@@ -44,11 +44,14 @@ Rails.application.routes.draw do
     # Friends
     get 'friends/index'
 
+    # groups
     get 'groups/new'
     get 'groups/current_user_text_channel_ids', to: 'groups#current_user_text_channel_ids', as: :current_user_text_channel_ids
     get 'groups/edit/:id', to: 'groups#edit', as: :groups_edit
     get 'groups/show/:id', to: 'groups#show', as: :groups_show
     post 'groups/create'
+    put 'groups/update/:id', to: 'groups#update', as: :groups_update 
+    delete 'groups/delete/:id', to: 'groups#destroy', as: :groups_delete
     get 'groups/user_groups'
     get 'groups/available_groups'
 

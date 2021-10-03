@@ -4,17 +4,32 @@
  * This class is dedicated to facilitating asynchronous requests using fetch api
  */
  export class AjaxBuilder { 
-  constructor () {
+  constructor (content_type='application/json', accept='application/json') {
     this.request_headers = {
       'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
       'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/json', 
-      'Accept': 'application/json'
+      'Content-Type': content_type, 
+      'Accept': accept
     }
   }
 
   get(url, success_callback = undefined, error_callback = undefined){ 
     fetch(url, { method: 'GET', headers: this.request_headers } )
+    .then((response) => {
+      if(!response.ok) throw response;
+      response.json().then((data)=>{
+        success_callback?.(data);
+      });
+    })
+    .catch( (error)=>{
+      error.json().then((data)=>{
+        error_callback?.(data);
+      })
+    });
+  }
+
+  delete(url, success_callback = undefined, error_callback = undefined){ 
+    fetch(url, { method: 'DELETE', headers: this.request_headers } )
     .then((response) => {
       if(!response.ok) throw response;
       response.json().then((data)=>{

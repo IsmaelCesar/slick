@@ -7,6 +7,7 @@
 // CSS files
 import "stylesheets/groups";
 import "messaging/groups/show";
+import "messaging/groups/edit";
 import alertify from "alertifyjs";
 import { Modal } from "bootstrap";
 window.Modal = Modal;

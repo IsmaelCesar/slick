@@ -1,6 +1,6 @@
 class Messaging::GroupsController < Messaging::MessagingController
 
-  before_action :set_group, only: %i[edit show]
+  before_action :set_group, only: %i[edit show destroy update]
   before_action :set_current_user 
 
   def new
@@ -8,6 +8,15 @@ class Messaging::GroupsController < Messaging::MessagingController
   end
 
   def edit
+  end
+
+  # [PUT] /messaging/groups/update/:id
+  def update
+    if current_user.id == @group.user_adm.id
+      if @group.update(group_params)
+        redirect_to messaging_groups_show_path(@group)
+      end
+    end
   end
 
   def show
@@ -24,7 +33,13 @@ class Messaging::GroupsController < Messaging::MessagingController
     end
   end
 
+  # [DELETE] /messaging/groups/delete/:id
   def destroy
+    if current_user.id == @group.user_adm.id
+      if @group.delete
+        redirect_to messaging_chats_index_path
+      end
+    end
   end
 
   # [GET] groups/current_user_text_channel_ids
