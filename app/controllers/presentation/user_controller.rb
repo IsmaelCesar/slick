@@ -12,7 +12,8 @@ class Presentation::UserController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
-      redirect_to presentation_user_sign_up_path
+      user_login(@user)
+      redirect_to messaging_chats_index_path
     else
       render :sign_up
     end
