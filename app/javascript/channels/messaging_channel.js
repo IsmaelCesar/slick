@@ -31,7 +31,8 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       let user_id = document.querySelector('meta[name="user_id"]').content; 
       user_id = parseInt(user_id)
       latest_message.classList.remove('contact-message');
-      latest_message.querySelector('.message-content-actions').classList.remove('contact-message');
+      let message_content_actions = latest_message.querySelector('.message-content-actions');
+      message_content_actions.classList.remove('contact-message');
       if(user_id === user_sender_id){
         latest_message.classList.add('user-message');
         latest_message.querySelector('.message-content-actions').classList.add('user-message');
@@ -39,7 +40,15 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       else{
         latest_message.classList.add('contact-message');
         latest_message.querySelector('.message-content-actions').classList.add('contact-message');
+        this.remove_user_exclusive_actions_from_conainter(message_content_actions);
       }
+    },
+    remove_user_exclusive_actions_from_conainter(actions_container){
+      console.log(actions_container);
+      let btn_delete = actions_container.querySelector('.btn-danger');
+      let btn_success = actions_container.querySelector('.btn-success');
+      actions_container.removeChild(btn_delete); 
+      actions_container.removeChild(btn_success);
     }
   });
 }
