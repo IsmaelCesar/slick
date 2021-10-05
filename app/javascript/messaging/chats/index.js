@@ -8,6 +8,7 @@
   import { Modal } from "bootstrap";
   import { AjaxBuilder } from "../../packs/ajax_utils";
   import alertify from "alertifyjs";
+  import { toggle_message_answer_for_button } from "../messages/utils";
 
   const ajax_builder = new AjaxBuilder();
   const modal_container = document.querySelector('#modal-container');
@@ -39,19 +40,7 @@
   });
 
   if(modal_container){
-    console.log('Applying mutation observer');
     modal_container_observer.observe(modal_container, { childList: true });
-  }
-
-  /**
-   * @author Ismael Cesar <leamscesar@gmail.com>
-   * 
-   * disconnects the channel
-   * 
-   * @param {*} channel 
-   */
-  function disconnect_channel(channel){
-
   }
 
   const buttons_select_chats  = document.querySelectorAll('.btn-select-chat');
@@ -68,3 +57,12 @@
      
     });
   }
+
+  // Tracking mutations on the chat container for the messages
+  const message_chat_content = document.querySelector('.messaging-chat-content');
+  const message_chat_observer = new MutationObserver(()=>{    
+    document.querySelectorAll('.btn-answer-message').forEach((button_answer_message)=>{
+      toggle_message_answer_for_button(button_answer_message);
+    });
+  });
+  message_chat_observer.observe(message_chat_content, { childList: true });

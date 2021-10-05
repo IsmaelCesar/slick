@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_214921) do
+ActiveRecord::Schema.define(version: 2021_10_05_103030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2021_09_16_214921) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "answered_message_id"
+    t.index ["answered_message_id"], name: "index_messages_on_answered_message_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -116,12 +118,10 @@ ActiveRecord::Schema.define(version: 2021_09_16_214921) do
 
   create_table "user_invites", force: :cascade do |t|
     t.boolean "is_accepted", default: false
-    t.bigint "user_invite_id", null: false
-    t.bigint "user_invitee_id", null: false
+    t.integer "user_invite_id", null: false
+    t.integer "user_invitee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_invite_id"], name: "index_user_invites_on_user_invite_id"
-    t.index ["user_invitee_id"], name: "index_user_invites_on_user_invitee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_214921) do
   add_foreign_key "group_invites", "groups"
   add_foreign_key "group_invites", "users"
   add_foreign_key "groups", "users", column: "user_adm_id"
+  add_foreign_key "messages", "messages", column: "answered_message_id"
   add_foreign_key "text_channel_messages", "messages"
   add_foreign_key "text_channel_messages", "text_channels"
   add_foreign_key "text_channels", "groups"

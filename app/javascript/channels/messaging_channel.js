@@ -1,4 +1,5 @@
 //import consumer from "./consumer"
+import { toggle_message_answer_for_button } from "../messaging/messages/utils";
 
 export default function init_subscription_for_resource(consumer, resource_name, resource_id){
   return consumer.subscriptions.create({ channel: "MessagingChannel", 
@@ -47,6 +48,8 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       console.log(actions_container);
       let btn_delete = actions_container.querySelector('.btn-danger');
       let btn_success = actions_container.querySelector('.btn-success');
+      let btn_answer = actions_container.querySelector('.btn-answer-message');
+      toggle_message_answer_for_button(btn_answer);
       actions_container.removeChild(btn_delete); 
       actions_container.removeChild(btn_success);
     }
