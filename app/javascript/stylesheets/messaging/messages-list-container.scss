@@ -30,10 +30,21 @@
       justify-content: right;
       width: 90%;
       margin: 1.5em auto;
+      position: relative;
       
+      .message-content-actions{
+        position: absolute;
+        top: 0;
+        right: 8em;
+        display: none;
+      }
+
+      .message-content-actions.contact-message{
+        left: 8em;
+      }
 
       .message-content{
-        width: fit-content;
+        width: 25%;
         height: 30%;
         padding: 1em;
         border: 1px solid $slick-main-color;
@@ -55,6 +66,12 @@
         color: black;
       }      
 
+    }
+    .message-content-container:hover{
+      .message-content-actions{
+        display: flex;
+        justify-content: space-between;
+      }
     }
 
     .message-content-container.user-message{

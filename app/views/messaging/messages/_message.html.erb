@@ -1,4 +1,10 @@
 <section class="message-content-container <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
+  <section class="message-content-actions <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
+    <%= button_tag class: 'btn btn-sm btn-primary' do%>
+      <i class="fas fa-share"></i>
+    <% end %>
+    <%= render_user_exclusive_actions message %>
+  </section>
   <section class="message-content">
     <p> 
       <%= message.content %>
