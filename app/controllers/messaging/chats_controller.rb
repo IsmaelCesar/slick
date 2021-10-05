@@ -40,6 +40,7 @@ class Messaging::ChatsController < Messaging::MessagingController
       if @message.save && @chat_message.save
         ActionCable.server.broadcast "messaging/chat/#{@chat.id}",
                                      message: render_message(@chat_message),
+                                     user_id: @user.id,
                                      messages_container_id: "chat-#{@chat.id}"
 
       end

@@ -12,6 +12,7 @@ class Messaging::TextChannelMessagesController < Messaging::MessagingController
       if @message.save! && @text_channel_message.save!
         ActionCable.server.broadcast "messaging/text_channel/#{@text_channel.id}",
                                      message: render_message(@text_channel_message),
+                                     user_id: @text_channel_message.user.id,
                                      messages_container_id: "text-channel-#{@text_channel.id}"
       end
     end

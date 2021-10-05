@@ -16,13 +16,29 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       let messages_content_list = document.querySelector(`#${data['messages_container_id']}`);
       if(messages_content_list){
         messages_content_list.innerHTML += data['message']; 
-        let latest_message = messages_content_list.lastChild
+        let latest_message = messages_content_list.lastChild;
         if (latest_message){
-          messages_content_list.scroll({ top: latest_message.offsetTop })
+          this.update_message_class(latest_message, parseInt(data['user_id']));
+          messages_content_list.scroll({ top: latest_message.offsetTop });
         }
       }
       else{
         console.error('Container: ', data['messages_container_id'], 'not found'); 
+      }
+    },
+
+    update_message_class(latest_message, user_sender_id) {
+      let user_id = document.querySelector('meta[name="user_id"]').content; 
+      user_id = parseInt(user_id)
+      latest_message.classList.remove('contact-message');
+      latest_message.querySelector('.message-content-actions').classList.remove('contact-message');
+      if(user_id === user_sender_id){
+        latest_message.classList.add('user-message');
+        latest_message.querySelector('.message-content-actions').classList.add('user-message');
+      }
+      else{
+        latest_message.classList.add('contact-message');
+        latest_message.querySelector('.message-content-actions').classList.add('contact-message');
       }
     }
   });
