@@ -14,12 +14,7 @@ module MessageAttributes
   # Returns the answer of the current message
   #
   def answer
-    message_class = self.class
-    message_class.joins(:message)
-                 .where(message: {
-                   message: message.message
-                 })
-                 .first
+    message&.answered_message
   end
 
 end

@@ -35,7 +35,9 @@ class Messaging::ChatsController < Messaging::MessagingController
   def send_message
     ActiveRecord::Base.transaction do
       @user = current_user
-      @message = Message.new(content: params[:content], user: @user)
+      @message = Message.new(content: params[:content],
+                             answered_message_id: params[:answered_message_id],
+                             user: @user)
       @chat_message = ChatMessage.new(message: @message, chat: @chat)
       if @message.save && @chat_message.save
         ActionCable.server.broadcast "messaging/chat/#{@chat.id}",

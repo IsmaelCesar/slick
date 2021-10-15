@@ -5,6 +5,11 @@
     <% end %>
     <%= render_user_exclusive_actions message %>
   </section>
+  <% if message.answer %>
+    <section class="message-answer-preview">
+      <p><%= message.answer.content %></p>
+    </section>
+  <% end%>
   <section class="message-content">
     <p> 
       <%= message.content %>

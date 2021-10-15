@@ -47,6 +47,11 @@
         left: 8em;
       }
 
+      .message-answer-preview{
+        background-color: #c0c0c0;
+        border-radius: 1em;
+      }
+
       .message-content{
         width: 50%;
         height: 30%;
@@ -94,6 +99,17 @@
 
   }
 
+  .answered-message{
+    background-color: #c0c0c0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    p { 
+      width: 70%;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
   .messages-list-text-form{
     background-color: white;
     /*box-sizing: border-box;*/
