@@ -14,8 +14,6 @@
       let message_text = extract_message_text_from_button_parent_note(button);
       let answered_message_node = build_answered_message_node(message_text);
       prepend_message_text_to_send_message_form(answered_message_node);
-      //let answered_message_element = document.querySelector('#answered_message_id'); 
-      //answered_message_element.value = button.value
       set_answered_message_value(button.value); 
     });
   }
@@ -25,7 +23,7 @@
    * where the button is
    * 
    * @param {button} button html node button
-   * @returns {p}  html message text extracted
+   * @returns {String}  message text extracted
    */
   function extract_message_text_from_button_parent_note(button){
     let user_message_container = button.parentNode.parentNode; 
@@ -61,7 +59,7 @@
     message_list_container.insertBefore(answered_message_node, form_container); 
   }
 
-  function set_answered_message_value(value){
+  export function set_answered_message_value(value){
     let answered_message_element = document.querySelector('#answered_message_id'); 
     answered_message_element.value = value;
   }
