@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     post 'groups/create'
     put 'groups/update/:id', to: 'groups#update', as: :groups_update 
     delete 'groups/delete/:id', to: 'groups#destroy', as: :groups_delete
+    get 'groups/join/:id', to: 'groups#join', as: :join_group
     get 'groups/user_groups'
     get 'groups/available_groups'
 

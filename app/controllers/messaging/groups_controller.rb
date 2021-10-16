@@ -1,6 +1,6 @@
 class Messaging::GroupsController < Messaging::MessagingController
 
-  before_action :set_group, only: %i[edit show destroy update]
+  before_action :set_group, only: %i[edit show destroy update join]
   before_action :set_current_user 
 
   def new
@@ -61,7 +61,24 @@ class Messaging::GroupsController < Messaging::MessagingController
   end
 
   def available_groups
-    @groups = Group.where('user_adm_id != :user_adm_id', {user_adm_id: @current_user.id})
+    @groups = Group
+              .left_joins(:user_groups)
+              .where('user_adm_id != :user_adm_id', { user_adm_id: @current_user.id })
+              .where(user_groups: { user: nil })
+  end
+
+  # [GET] groups/join/:id
+  def join
+    @user_group = UserGroup.new(user: @current_user, group: @group)
+    ActiveRecord::Base.transaction do
+      if @user_group.save
+        redirect_to messaging_groups_show_path(@group.id)
+      else
+        respond_to do |format|
+          format.js { render js: 'alertify.alert(\'Error\',\'There has been a problem when joining the group\')'}
+        end
+      end
+    end
   end
 
   private

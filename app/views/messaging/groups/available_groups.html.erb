@@ -13,7 +13,7 @@
           <div class="group-name">
             <%= group.name %>
           </div>
-          <%= button_tag class: 'btn btn-lg btn-outline-light' do %>
+          <%= link_to messaging_join_group_path(group.id), class: 'btn btn-lg btn-outline-light', remote: true do %>
             <i class="fas fa-sign-in-alt"></i>Join
           <% end %>
         </div>
