@@ -21,7 +21,7 @@ class Messaging::TextChannelMessagesController < Messaging::MessagingController
   private
 
   def message_params
-    params.permit(:user_id, :content)
+    params.permit(:user_id, :content, :answered_message_id)
   end
 
 end

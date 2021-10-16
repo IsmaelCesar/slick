@@ -8,7 +8,7 @@
   import { Modal } from "bootstrap";
   import { AjaxBuilder } from "../../packs/ajax_utils";
   import alertify from "alertifyjs";
-  import { toggle_message_answer_for_button } from "../messages/utils";
+  import { setup_mutation_observer_for_context } from '../messaging_observers';
 
   const ajax_builder = new AjaxBuilder();
   const modal_container = document.querySelector('#modal-container');
@@ -57,11 +57,5 @@
     });
   }
 
-  // Tracking mutations on the chat container for the messages
   const message_chat_content = document.querySelector('.messaging-chat-content');
-  const message_chat_observer = new MutationObserver(()=>{
-    document.querySelectorAll('.btn-answer-message').forEach((button_answer_message)=>{
-      toggle_message_answer_for_button(button_answer_message);
-    });
-  });
-  message_chat_observer.observe(message_chat_content, { childList: true });
+  const chat_content_observer = setup_mutation_observer_for_context(message_chat_content);

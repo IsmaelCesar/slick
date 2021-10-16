@@ -5,6 +5,7 @@
 .messages-list-contaner{
   height: 100vh;
   background-color: white;
+  position: relative;
   
   .messages-list-header{
     background-color: $slick-dark-purple;
@@ -53,10 +54,11 @@
       }
 
       .message-content{
-        width: 50%;
+        width: 25em;
         height: 30%;
         padding: 1em;
         border: 1px solid $slick-main-color;
+        overflow-wrap: break-word;
         //border-radius: 0px 30px 30px 30px;
       }
 
@@ -104,6 +106,10 @@
     margin: 0;
     display: flex;
     justify-content: space-between;
+    font-size: 10pt;
+    position: absolute;
+    width: 100%;
+    top: 75%;
     p { 
       width: 70%;
       overflow: hidden;

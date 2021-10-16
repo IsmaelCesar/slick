@@ -6,6 +6,7 @@
  */
 
   import { Modal } from "bootstrap";
+  import { setup_mutation_observer_for_context } from '../messaging_observers';
 
   document.querySelector('.btn-toggle-group-actions')?.addEventListener('click', ()=>{
     let group_actions = document.querySelector('#group-actions'); 
@@ -15,3 +16,5 @@
     }
   })
 
+  const message_chat_content = document.querySelector('.group-menu-selection-content');
+  const chat_content_observer = setup_mutation_observer_for_context(message_chat_content);
