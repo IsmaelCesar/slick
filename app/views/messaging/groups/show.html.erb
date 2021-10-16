@@ -8,6 +8,10 @@
                          type: 'button' do %>
             <i class="fas fa-cog"></i>
           <% end %>
+        <% else %> 
+          <%= link_to messaging_leave_group_path(@group.id), class: 'btn btn-sm btn-outline-light', remote: true, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+          <% end %>
         <% end %>
       </h3>
     </header>

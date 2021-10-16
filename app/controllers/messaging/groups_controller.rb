@@ -1,6 +1,6 @@
 class Messaging::GroupsController < Messaging::MessagingController
 
-  before_action :set_group, only: %i[edit show destroy update join]
+  before_action :set_group, only: %i[edit show destroy update join leave]
   before_action :set_current_user 
 
   def new
@@ -76,6 +76,20 @@ class Messaging::GroupsController < Messaging::MessagingController
       else
         respond_to do |format|
           format.js { render js: 'alertify.alert(\'Error\',\'There has been a problem when joining the group\')'}
+        end
+      end
+    end
+  end
+
+  # [DELETE] groups/leave/:id
+  def leave
+    @user_group = UserGroup.find_by(user: @current_user, group: @group)
+    ActiveRecord::Base.transaction do
+      if @user_group.delete
+        redirect_to messaging_groups_available_groups_path
+      else
+        respond_to do |format| 
+          format.js { render js: 'alertify.alert(\'Error\', \'There has been an error when leaving the group\')'}
         end
       end
     end
