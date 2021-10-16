@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   end
 
   namespace :messaging do
+
+    get 'messages/edit/:id', to: 'messages#edit', as: :messages_edit
+    put 'messages/update/:id', to: 'messages#update', as: :messages_update
+    delete 'messages/destroy/:id', to: 'messages#destroy', as: :messages_destroy
+
     get 'chats/index'
     get 'chats/current_user_chat_ids', to: 'chats#current_user_chat_ids', as: :current_user_chat_ids
     get 'chats/show/:id', to: 'chats#show', as: :show_chats

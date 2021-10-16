@@ -1,5 +1,6 @@
 //import consumer from "./consumer"
 import { toggle_message_answer_for_button } from "../messaging/messages/utils";
+import { set_answered_message_value } from "../messaging/messages/utils";
 
 export default function init_subscription_for_resource(consumer, resource_name, resource_id){
   return consumer.subscriptions.create({ channel: "MessagingChannel", 
@@ -43,15 +44,20 @@ export default function init_subscription_for_resource(consumer, resource_name, 
         latest_message.querySelector('.message-content-actions').classList.add('contact-message');
         this.remove_user_exclusive_actions_from_conainter(message_content_actions);
       }
+      let btn_answer = message_content_actions.querySelector('.btn-answer-message');
+      toggle_message_answer_for_button(btn_answer);
+      this.remove_answer();
     },
     remove_user_exclusive_actions_from_conainter(actions_container){
-      console.log(actions_container);
       let btn_delete = actions_container.querySelector('.btn-danger');
       let btn_success = actions_container.querySelector('.btn-success');
-      let btn_answer = actions_container.querySelector('.btn-answer-message');
-      toggle_message_answer_for_button(btn_answer);
       actions_container.removeChild(btn_delete); 
       actions_container.removeChild(btn_success);
+    },
+    remove_answer(){
+      let answered_message_container = document.querySelector('.answered-message');
+      answered_message_container?.remove();
+      set_answered_message_value(null);
     }
   });
 }

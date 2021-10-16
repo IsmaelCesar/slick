@@ -25,7 +25,9 @@ module Messaging::MessagesHelper
   def render_user_exclusive_actions(message)
     if current_user.id == message.user.id
       render(partial: 'messaging/messages/message_sender_exclusive_actions',
-             message: message,
+             locals: {
+               message: message.message
+             },
              layout: false)
     end
   end

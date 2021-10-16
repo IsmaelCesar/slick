@@ -1,17 +1,17 @@
-<section class="message-content-container <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
+<section id="message-<%= message.message.id %>" class="message-content-container <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
   <section class="message-content-actions <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
     <%= button_tag class: 'btn btn-sm btn-primary btn-answer-message', value: message.message.id do %>
       <i class="fas fa-share"></i>
     <% end %>
     <%= render_user_exclusive_actions message %>
   </section>
-  <% if message.answer %>
-    <section class="message-answer-preview">
-      <p><%= message.answer.content %></p>
-    </section>
-  <% end%>
   <section class="message-content">
-    <p> 
+    <% if message.answer %>
+      <section class="message-answer-preview">
+        <p><%= message.answer.content %></p>
+      </section>
+    <% end%>
+    <p class="message-text"> 
       <%= message.content %>
     </p>
   </section>

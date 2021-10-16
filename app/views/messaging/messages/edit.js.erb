@@ -1,0 +1,18 @@
+<% form_edit = j render partial: 'messaging/messages/partials/form_edit', locals: { message: message }, layout: false %>
+(function () {
+  let edit_message_element = document.querySelector('#form-edit-message'); 
+  if(edit_message_element){
+    remove_form_edit_from_message_container(edit_message_element)
+  } 
+
+  let message_content_conainer = document.querySelector("#message-<%= message.id %> .message-content p.message-text"); 
+  if(message_content_conainer){
+    message_content_conainer.innerHTML = '<%= form_edit %>'; 
+    let new_form_edit = message_content_conainer.querySelector('#form-edit-message');
+    new_form_edit.querySelector('.btn-cancel-edit-message')?.addEventListener('click',(event)=>{
+      event.preventDefault();
+      new_form_edit.reset();
+      remove_form_edit_from_message_container(new_form_edit);
+    })
+  }
+}).call(this)
