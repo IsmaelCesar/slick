@@ -24,8 +24,7 @@
         let form_data = new FormData(form_user_invite);
         ajax_builder.post('/messaging/user_invites/create', 
                           Object.fromEntries(form_data), 
-                          (data)=>{ 
-                            //new Modal(document.querySelector('#modal-new-invite')).hide();                             
+                          (data)=>{                          
                             modal_new_invite.hide();
                             alertify.success('Successfuly sent an invite');
                           }, (error)=>{
@@ -60,7 +59,7 @@
 
   // Tracking mutations on the chat container for the messages
   const message_chat_content = document.querySelector('.messaging-chat-content');
-  const message_chat_observer = new MutationObserver(()=>{    
+  const message_chat_observer = new MutationObserver(()=>{
     document.querySelectorAll('.btn-answer-message').forEach((button_answer_message)=>{
       toggle_message_answer_for_button(button_answer_message);
     });

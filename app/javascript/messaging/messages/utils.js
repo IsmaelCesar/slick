@@ -9,7 +9,7 @@
  * 
  * @param button HTML button
  */
-  export function toggle_message_answer_for_button(button){
+  export function toggle_message_answer_for_button(button){    
     button.addEventListener('click', ()=>{
       let message_text = extract_message_text_from_button_parent_note(button);
       let answered_message_node = build_answered_message_node(message_text);

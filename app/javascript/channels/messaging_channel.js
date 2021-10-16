@@ -21,6 +21,7 @@ export default function init_subscription_for_resource(consumer, resource_name, 
         let latest_message = messages_content_list.lastChild;
         if (latest_message){
           this.update_message_class(latest_message, parseInt(data['user_id']));
+          this.clean_text_field_message_sent(data['user_id']);
           messages_content_list.scroll({ top: latest_message.offsetTop });
         }
       }
@@ -48,16 +49,23 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       toggle_message_answer_for_button(btn_answer);
       this.remove_answer();
     },
+    
     remove_user_exclusive_actions_from_conainter(actions_container){
       let btn_delete = actions_container.querySelector('.btn-danger');
       let btn_success = actions_container.querySelector('.btn-success');
       actions_container.removeChild(btn_delete); 
       actions_container.removeChild(btn_success);
     },
+    
     remove_answer(){
       let answered_message_container = document.querySelector('.answered-message');
       answered_message_container?.remove();
       set_answered_message_value(null);
+    },
+    
+    clean_text_field_message_sent(user_id){ 
+      let text_field_send_message = document.querySelector(`.form-send-message-${user_id}`);
+      text_field_send_message.reset();
     }
   });
 }

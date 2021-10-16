@@ -8,7 +8,7 @@
     <% end %>
   </section>
   <section class="messages-list-text-form">
-    <%= form_with method: :post, url: resource_url , id: 'form-message-content', html: { 'data-remote': true }  do |f| %>
+    <%= form_with method: :post, url: resource_url , id: 'form-message-content', html: { 'data-remote': true, class: "form-send-message-#{current_user.id}" }  do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :answered_message_id %>
       <%= f.text_field :content, class: 'form-control', autocomplete: 'off' %>
