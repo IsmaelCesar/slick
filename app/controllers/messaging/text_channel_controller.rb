@@ -38,7 +38,7 @@ class Messaging::TextChannelController < Messaging::MessagingController
       if @new_text_channel.save
         @new_text_channel.reload
         format.js do
-          render 'messaging/text_channel/create',
+          render 'messaging/text_channel/update_text_channel_list',
                  locals: {
                    group: @new_text_channel.group,
                    current_user: @current_user
@@ -55,6 +55,23 @@ class Messaging::TextChannelController < Messaging::MessagingController
   end
 
   def destroy
+    @text_channel = TextChannel.find(params[:id])
+    @group = @text_channel.group
+    ActiveRecord::Base.transaction do
+      respond_to do |format|
+        if @text_channel.delete
+          format.js do
+            render 'messaging/text_channel/destroy',
+                   locals: {
+                     group: @group,
+                     current_user: @current_user
+                   }
+          end
+        else
+          format.js { render js: "alertify.error('Error when deleting the text channel')" }
+        end
+      end
+    end
   end
 
   private
