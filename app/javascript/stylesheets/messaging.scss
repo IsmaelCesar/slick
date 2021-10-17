@@ -191,3 +191,32 @@
   height: 100%; 
   border-radius: 10em;
 }
+
+.invite-tables-container{
+  height: 100vh;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: $slick-dark-purple;
+
+  h1 {
+     margin-left: 2em;
+  }
+
+  .invites-table{ 
+    color: black;
+    width: 75%;
+    margin: auto;
+    margin-top: 3em;
+    margin-bottom: 5em;
+
+    tr {
+      background-color: white;
+    }
+
+    tr:hover {
+      background-color: #c9c9c9;
+    }
+  }
+}
