@@ -2,11 +2,13 @@
   
     <% group.text_channels.each do |text_channel|  %>
       <li>
-        <%= link_to  messaging_text_channel_path(text_channel.id), class: 'btn btn-xs btn-outline-light', remote: true, method: :delete do %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-        <%= link_to '#', class: 'btn btn-xs btn-outline-light' do %>
-          <i class="fas fa-edit"></i>
+        <% if @group.user_adm.id == @current_user.id%>
+          <%= link_to  messaging_text_channel_path(text_channel.id), class: 'btn btn-xs btn-outline-light', remote: true, method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+          <%= link_to edit_messaging_text_channel_path(text_channel.id), class: 'btn btn-xs btn-outline-light', remote: true do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
         <div class="d-grid gap-2">
           <%= link_to messaging_text_channel_path(text_channel), remote: true, class: 'btn btn-sm btn-outline-light text-channel-button text-channel-option' do %>

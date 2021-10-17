@@ -30,6 +30,10 @@ class Messaging::TextChannelController < Messaging::MessagingController
   end
 
   def edit
+    @text_channel = TextChannel.find(params[:id])
+    respond_to do |format|
+      format.js { render 'messaging/text_channel/new', locals: { text_channel: @text_channel } }
+    end
   end
 
   def create
@@ -52,6 +56,23 @@ class Messaging::TextChannelController < Messaging::MessagingController
   end
 
   def update
+    @text_channel = TextChannel.find(params[:id])
+    @group = @text_channel.group
+    ActiveRecord::Base.transaction do
+      respond_to do |format|
+        if @text_channel.update(text_channel_params)
+          format.js do
+            render 'messaging/text_channel/destroy',
+                   locals: {
+                     group: @group,
+                     current_user: @current_user
+                   }
+          end
+        else
+          format.js { render js: "alertify.error('#{@text_channel.errors.full_messages.join('\n')}')" }
+        end
+      end
+    end
   end
 
   def destroy
@@ -68,7 +89,7 @@ class Messaging::TextChannelController < Messaging::MessagingController
                    }
           end
         else
-          format.js { render js: "alertify.error('Error when deleting the text channel')" }
+          format.js { render js: "alertify.error('#{@text_channel.errors.full_messages.join('\n')}')" }
         end
       end
     end

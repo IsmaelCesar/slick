@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
       </div>
-      <%= form_with model: text_channel, url: messaging_text_channel_index_path, html: { 'data-remote': true } do |f| %>
+      <%= form_with model: text_channel, url: infer_form_url_based_on_record(text_channel), method: text_channel.new_record? ? :post : :put, html: { 'data-remote': true } do |f| %>
         <div class="modal-body">
           <%= f.hidden_field :group_id %>
           <%= f.text_field :name, placeholder: 'Type the name of the channel', required: true, class: 'form-control'%>
@@ -13,7 +13,7 @@
             <i class="fas fa-times"></i> Dismiss
           <% end %>
           <%= f.button class: 'btn btn-success btn-add-text-channel', 'data-bs-dismiss': 'modal' do %>
-            <i class="fas fa-plus"></i> Add
+            <i class="fas fa-plus"></i> <%= text_channel.new_record? ? 'Add' : 'Update' %>
           <% end %>
         </div>
       <% end %>
