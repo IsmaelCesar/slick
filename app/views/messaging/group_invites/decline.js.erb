@@ -1,7 +1,0 @@
-<% invites_list = j render partial: 'messaging/user_invites/list_received', locals: { received_invites: received_invites, group_invites: group_invites } %>
-(function (){
-  let listing_dashboard = document.querySelector('.messaging-chat-content')
-  if(listing_dashboard){
-    listing_dashboard.innerHTML = '<%= invites_list %>'
-  }
-})()

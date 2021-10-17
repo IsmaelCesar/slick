@@ -7,10 +7,6 @@
 
   import { Modal } from "bootstrap";
   import { setup_mutation_observer_for_context } from '../messaging_observers';
-  import consumer from '../../channels/consumer';
-  import init_subscription_for_resource from '../../channels/messaging_channel';
-  window.consumer = consumer
-  window.init_subscription_for_resource = init_subscription_for_resource
 
   document.querySelector('.btn-toggle-group-actions')?.addEventListener('click', ()=>{
     let group_actions = document.querySelector('#group-actions'); 

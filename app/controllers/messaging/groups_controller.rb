@@ -36,7 +36,7 @@ class Messaging::GroupsController < Messaging::MessagingController
   # [DELETE] /messaging/groups/delete/:id
   def destroy
     if @current_user.id == @group.user_adm.id
-      if @group.delete
+      if @group.destroy
         redirect_to messaging_chats_index_path
       end
     end

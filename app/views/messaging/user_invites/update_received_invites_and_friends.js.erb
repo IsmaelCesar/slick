@@ -11,4 +11,8 @@
     listing_chats.innerHTML = '<%= list_chats %>'
   }
 
+  <% if new_chat %>
+    init_subscription_for_resource(consumer, 'chat', '<%= new_chat.id %>');
+  <% end %>
+
 }).call(this);

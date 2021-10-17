@@ -1,7 +1,17 @@
 <% invites_list = j render partial: 'messaging/user_invites/list_received', locals: { received_invites: received_invites, group_invites: group_invites } %>
+<% all_user_groups = j render partial: 'messaging/groups/partials/list_all_user_groups', locals: { all_user_groups: all_user_groups }, layout: false %>
 (function (){
   let listing_dashboard = document.querySelector('.messaging-chat-content')
   if(listing_dashboard){
     listing_dashboard.innerHTML = '<%= invites_list %>'
   }
-})()
+
+  let all_user_groups_container = document.querySelector('.group-options'); 
+  if(all_user_groups_container){
+    all_user_groups_container.innerHTML += '<%= all_user_groups %>';    
+    <% new_group_channels_ids.each do |channel_id| %>
+      init_subscription_for_resource(consumer, 'text_channel', '<%= channel_id %>');
+    <% end %>
+  }
+
+}).call(this)

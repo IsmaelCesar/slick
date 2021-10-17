@@ -46,16 +46,19 @@ class Messaging::GroupInvitesController < Messaging::MessagingController
     @group_invite = GroupInvite.find(params[:id])
     @group = @group_invite.group
     @user  = @group_invite.user
+    @user_group = nil
     ActiveRecord::Base.transaction do
-      UserGroup.create!(user: @user, group: @group)
+      @user_group = UserGroup.create!(user: @user, group: @group)
       @group_invite.update(is_accepted: true)
     end
     respond_to do |format|
       format.js do
         render 'messaging/group_invites/accept',
                locals: {
-                 received_invites: @current_user.invites_received,
-                 group_invites: @current_user.group_invites
+                 received_invites: @current_user.invites_received.where(is_accepted: [false, nil]),
+                 group_invites: @current_user.group_invites.where(is_accepted: [false, nil]),
+                 all_user_groups: @current_user.all_user_groups,
+                 new_group_channels_ids: @user_group&.group&.text_channels&.ids
                }
       end
     end
@@ -69,10 +72,10 @@ class Messaging::GroupInvitesController < Messaging::MessagingController
     end
     respond_to do |format|
       format.js do
-        render 'messaging/group_invites/decline',
+        render 'messaging/user_invites/list_received',
                locals: {
-                 received_invites: @current_user.invites_received,
-                 group_invites: @current_user.group_invites
+                 received_invites: @current_user.invites_received.where(is_accepted: [false, nil]),
+                 group_invites: @current_user.group_invites.where(is_accepted: [false, nil])
                }
       end
     end

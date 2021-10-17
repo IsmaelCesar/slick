@@ -10,13 +10,13 @@ class Messaging::UserInvitesController < Messaging::MessagingController
     @received_invites = @usuario.invites_received.where(is_accepted: [false, nil])
     @group_invites = @usuario.group_invites.where(is_accepted: [false, nil])
     respond_to do |format|
-      format.js {
-                  render 'messaging/user_invites/list_received',
-                  locals: {
-                            received_invites: @received_invites,
-                            group_invites: @group_invites
-                          }
-                }
+      format.js do
+        render 'messaging/user_invites/list_received',
+               locals: {
+                 received_invites: @received_invites,
+                 group_invites: @group_invites
+               }
+      end
     end
   end
 
@@ -31,7 +31,6 @@ class Messaging::UserInvitesController < Messaging::MessagingController
 
   # [POST] /messaging/user_invites/create
   def create
-    puts params
     @inviter = current_user
     @invitee = User.find_by(email: params[:user_email])
     @status = :ok
@@ -64,15 +63,16 @@ class Messaging::UserInvitesController < Messaging::MessagingController
     @chats = current_user.chats
     respond_to do |format|
       @received_invites = current_user.invites_received.where(is_accepted: [false, nil])
-      @group_invites = current_user.group_invites
-      format.js {
-                  render 'messaging/user_invites/update_received_invites_and_friends',
-                         locals: {
-                                    received_invites: @received_invites,
-                                    group_invites: @group_invites,
-                                    chats: @chats
-                                 }
-                }
+      @group_invites = current_user.group_invites.where(is_accepted: [false, nil])
+      format.js do
+        render 'messaging/user_invites/update_received_invites_and_friends',
+               locals: {
+                 received_invites: @received_invites,
+                 group_invites: @group_invites,
+                 chats: @chats,
+                 new_chat: @chat
+               }
+      end
     end
   end
 
