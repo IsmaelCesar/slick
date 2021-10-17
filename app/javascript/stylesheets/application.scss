@@ -45,6 +45,23 @@ header {
   color: #000000;
 }
 
+// Main page
+.teams { 
+  color: $slick-main-color;
+}
+
+.communities { 
+  color: $slick-light-green;
+}
+
+.partenrships { 
+  color: $slick-yellow;
+}
+
+.connections { 
+  color: $slick-dark-purple;
+}
+
 footer {
   display: flex;
   justify-content: center;
