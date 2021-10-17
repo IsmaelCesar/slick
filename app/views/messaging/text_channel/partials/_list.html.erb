@@ -2,7 +2,7 @@
   
     <% group.text_channels.each do |text_channel|  %>
       <li>
-        <% if @group.user_adm.id == @current_user.id%>
+        <% if group.user_adm.id == @current_user.id%>
           <%= link_to  messaging_text_channel_path(text_channel.id), class: 'btn btn-xs btn-outline-light text-channel-action', remote: true, method: :delete do %>
             <i class="fas fa-trash"></i>
           <% end %>

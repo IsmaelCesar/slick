@@ -11,9 +11,10 @@ class Messaging::FriendsController < Messaging::MessagingController
   # [DELETE] friends/destroy/:id'
   def destroy
     @friend = Friend.find(params[:id])
+    @friend_relation = Friend.find_by(user: @friend.friend)
     @chat = @friend.chat
-    ActiveRecord::Base.transaction do 
-      if @friend.destroy && @chat.destroy
+    ActiveRecord::Base.transaction do
+      if @friend.destroy && @friend_relation.destroy && @chat.destroy
         redirect_to messaging_chats_index_path
       else
         respond_to do |format|

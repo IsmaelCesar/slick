@@ -80,7 +80,7 @@ class Messaging::TextChannelController < Messaging::MessagingController
     @group = @text_channel.group
     ActiveRecord::Base.transaction do
       respond_to do |format|
-        if @text_channel.delete
+        if @text_channel.destroy
           format.js do
             render 'messaging/text_channel/destroy',
                    locals: {
