@@ -99,6 +99,13 @@
       }
     }
 
+    .message-content-container:hover.contact-message{
+      .message-content-actions{
+        flex-direction: row-reverse;
+        justify-content: left;
+      }
+    }
+
   }
 
   .answered-message{

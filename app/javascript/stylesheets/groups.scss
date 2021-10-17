@@ -77,7 +77,22 @@
 
       li { 
         margin:auto;
-      } 
+        display: flex;
+        justify-content: center;
+      }
+
+      a.text-channel-action{
+        font-size: 10pt;
+        display: inline-block;
+        display: none;
+      }
+
+
+      li:hover{
+        a.text-channel-action{
+          display: inline-block;
+        }
+      }
 
       a.text-channel-button{
         font-size: 0.8em;
