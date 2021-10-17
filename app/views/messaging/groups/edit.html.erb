@@ -1,20 +1,18 @@
 <section class="groups-container">
-  <div id="form-edit-group" class="group-form-container">
-    <%= form_with model: @group, url: messaging_groups_update_path(@group.id), method: :put do |f| %>
-      <%= render 'messaging/groups/partials/group_form_fields', form_builder: f %>
+  <%= form_with model: @group, url: messaging_groups_update_path(@group.id), method: :put do |f| %>
+    <%= render 'messaging/groups/partials/group_form_fields', form_builder: f %>
 
-      <hr>
-      <div>
-        <%= link_to messaging_groups_show_path(@group), class: 'btn btn-sm btn-outline-light' do %>
-          <i class="fas fa-times-circle"></i> Cancel
-        <% end %>
-        <%= link_to messaging_groups_delete_path(@group),  class: 'btn btn-sm btn-outline-light btn-delete-group', method: :delete do%>
-          <i class="fas fa-trash"></i> Delete
-        <% end %>
-        <%= f.submit class: 'btn btn-sm btn-outline-light', commit: 'Update group' do %>
-          <i class="fas fa-edit"></i> UP
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+    <hr>
+    <div>
+      <%= link_to messaging_groups_show_path(@group), class: 'btn btn-sm btn-outline-light' do %>
+        <i class="fas fa-times-circle"></i> Cancel
+      <% end %>
+      <%= link_to messaging_groups_delete_path(@group),  class: 'btn btn-sm btn-outline-light btn-delete-group', method: :delete do%>
+        <i class="fas fa-trash"></i> Delete
+      <% end %>
+      <%= f.submit class: 'btn btn-sm btn-outline-light', commit: 'Update group' do %>
+        <i class="fas fa-edit"></i> UP
+      <% end %>
+    </div>
+  <% end %>
 </section>

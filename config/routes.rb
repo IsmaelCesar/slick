@@ -70,6 +70,12 @@ Rails.application.routes.draw do
     resources :text_threads
     post ':text_thread_id/text_thread_messages/send_message', to: 'text_thread_messages#send_message', as: :send_text_thread_message
     post 'text_channel/:id/send_text_channel_message', to: 'text_channel_messages#send_text_channel_message', as: :send_text_channel_message
+
+    #current user
+    get 'users/edit'
+    put 'users/update'
+    delete 'users/delete'
+
   end
 
   root to: 'presentation/main#index'

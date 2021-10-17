@@ -220,3 +220,19 @@
     }
   }
 }
+
+// Functionalities concerning user edition
+.user-data-container{ 
+  height: 100vh;
+  width: 100%;
+  background-color: $slick-dark-purple;
+  color: white;
+
+  form{ 
+    width: 50%; 
+    margin: 10em auto;
+    div  {
+      margin: 10px 0; 
+    }
+  }
+}
