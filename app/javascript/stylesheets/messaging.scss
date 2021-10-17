@@ -157,6 +157,33 @@
   height: 100vh;
   width: 100%;
   background-color: $slick-dark-purple;
+  overflow: hidden;
+  overflow-y: scroll; 
+  display: grid;
+  grid-template-columns: 15em 15em 15em;
+  justify-content: center;
+  gap: 5em;
+
+  .friends-list-item { 
+    width: 12em;
+    height: 12em; 
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .friend-image{ 
+      font-size: 40pt;
+      width: 50px;
+      margin: auto;
+      i { 
+        display: block; 
+      }
+    }
+  }
 }
 
 #form-edit-message #message_content{

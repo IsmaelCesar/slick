@@ -7,7 +7,7 @@ class Chat < ApplicationRecord
   validates :contact, presence: true
   validates_with DifferenceChatValidator, on: :create
 
-  has_many :chat_messages
+  has_many :chat_messages, dependent: :destroy
 
   def get_contact(current_user)
     if current_user.id == user.id

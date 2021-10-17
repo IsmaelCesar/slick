@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
     # Friends
     get 'friends/index'
+    delete 'friends/destroy/:id', to: 'friends#destroy', as: :remove_friend
+    get 'friends/chat/:id', to: 'friends#chat', as: :chat_with_friend
 
     # groups
     get 'groups/new'

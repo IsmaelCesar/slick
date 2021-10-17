@@ -8,6 +8,21 @@ class Messaging::FriendsController < Messaging::MessagingController
     end
   end
 
+  # [DELETE] friends/destroy/:id'
+  def destroy
+    @friend = Friend.find(params[:id])
+    @chat = @friend.chat
+    ActiveRecord::Base.transaction do 
+      if @friend.destroy && @chat.destroy
+        redirect_to messaging_chats_index_path
+      else
+        respond_to do |format|
+          format.js { render js: "alertify.error('#{@friend.errors.full_messages}')"}
+        end
+      end
+    end
+  end
+
   private 
 
   def set_current_user
