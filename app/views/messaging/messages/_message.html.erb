@@ -3,6 +3,12 @@
     <%= button_tag class: 'btn btn-sm btn-primary btn-answer-message', value: message.message.id do %>
       <i class="fas fa-share"></i>
     <% end %>
+    <%# Rendering action that creates threads %>
+    <% if message.class == TextChannelMessage%>
+      <%= link_to '#', class: 'btn btn-sm btn-secondary', remote: true do %>
+        >
+      <% end %>
+    <% end %>
     <%= render_user_exclusive_actions message %>
   </section>
   <section class="message-content">
