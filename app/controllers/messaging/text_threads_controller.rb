@@ -15,7 +15,8 @@ class Messaging::TextThreadsController < Messaging::MessagingController
                      current_user: @current_user,
                      resource_header: @text_thread.label,
                      messages_container_id: "text-thread-#{@text_thread.id}",
-                     resource_url: messaging_send_text_thread_message_path(@text_thread.id)
+                     resource_url: messaging_send_text_thread_message_path(@text_thread.id),
+                     text_thread: @text_thread
                    }
           end
         else
@@ -42,7 +43,8 @@ class Messaging::TextThreadsController < Messaging::MessagingController
                      current_user: @current_user,
                      resource_header: @text_thread.label,
                      messages_container_id: "text-thread-#{@text_thread.id}",
-                     resource_url: messaging_send_text_thread_message_path(@text_thread.id)
+                     resource_url: messaging_send_text_thread_message_path(@text_thread.id),
+                     text_thread: @text_thread
                    }
           end
         else

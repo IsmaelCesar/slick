@@ -1,7 +1,7 @@
 /**
  * @author Ismael Cesar <leamscesar@gmail.com>
  * 
- * Methods used accross the application speficif for the messages
+ * Methods used accross the application specific for the messages
  */
 
 /**
@@ -30,6 +30,16 @@
     return user_message_container.querySelector('.message-content p.message-text').textContent;
   }
 
+  /**
+   * @author Ismael Cesar <leamscesar@gmail.com> 
+   * 
+   * Build an answer message container to be positioned
+   * just before the send message form
+   * 
+   * @param {String} user_message  The content of the message to be answered
+   * 
+   * @returns {div} The div containing the answered message content
+   */
   function build_answered_message_node(user_message){
     let text_node = document.createTextNode(user_message);
     let div = document.querySelector('.answered-message');

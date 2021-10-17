@@ -27,8 +27,8 @@ class Messaging::MessagesController < Messaging::MessagingController
   def destroy
     ActiveRecord::Base.transaction do
       respond_to do |format|
-        if @message.delete
-          format.js { render 'messaging/messages/destroy', message_id: @message.id }
+        if @message.destroy
+          format.js { render 'messaging/messages/destroy', locals: { message_id: @message.id } }
         else
           format.js do
             render inline: 'alertify.error(\"There has been a problem when deleting this message, please contact support\")'
