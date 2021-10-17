@@ -23,7 +23,8 @@
     <%# Rendering action that creates threads %>
     <% if message.class == TextChannelMessage && message.text_thread %>
       <div id="text-thread-actions-<%= message.text_thread.id %>">
-        <%= link_to messaging_text_thread_path(message.text_thread.id), class: 'btn btn-xs btn-secondary', remote: true do %>
+        <%= link_to messaging_text_thread_path(message.text_thread.id), class: 'btn btn-xs btn-secondary btn-access-thread', remote: true do %>
+          <%= hidden_field_tag :text_thread_id, message.text_thread.id %>
           > <%= message.text_thread.label %>
         <% end %>
         <%= link_to messaging_text_thread_path(message.text_thread.id), class: 'btn btn-xs btn-secondary', remote: true, method: :delete do %>
