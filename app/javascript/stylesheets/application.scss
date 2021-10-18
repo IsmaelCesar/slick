@@ -10,59 +10,91 @@ html, body {
 }
 
 // Main page header
-
-header { 
-  border-bottom: 1px solid #600BE6; 
-  padding: 0;
-  nav  {
-    margin: auto;
-    margin-top: 10px; 
-    margin-bottom: 10px;
-    width: 70%;
-    .project-name-logo { 
-      float: left; 
-      display: flex; 
-      justify-content: space-evenly;
-    }
-
-    ul{ 
-      width: 15em;
-      float: right;
-      list-style-type: none;
-      display: flex;
-      justify-content: space-between;
-
-      a {
-        text-decoration: none;
+.main-content{
+  height: 100vh;
+  width: 100%;
+  
+  header { 
+    border-bottom: 1px solid #600BE6; 
+    padding: 0;
+    nav  {
+      margin: auto;
+      margin-top: 10px; 
+      margin-bottom: 10px;
+      width: 70%;
+      .project-name-logo { 
+        float: left; 
+        display: flex; 
+        justify-content: space-evenly;
       }
 
+      ul{ 
+        width: 15em;
+        float: right;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+          text-decoration: none;
+        }
+
+      }
     }
   }
-}
 
-.link-to-root{
-  text-decoration: none;
-  color: #000000;
-}
+  .link-to-root{
+    text-decoration: none;
+    color: #000000;
+  }
 
-// Main page
-.teams { 
-  color: $slick-main-color;
-}
+  // Main page
+  .main-content{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 3em;
 
-.communities { 
-  color: $slick-light-green;
-}
+    .slick-main-texts{
+      height: fit-content;
+      padding-top: 5%;
+      
+      h1 {
+        margin-top: 0.5em;
+      }
 
-.partenrships { 
-  color: $slick-yellow;
-}
+      .teams { 
+        color: $slick-main-color;
+      }
+    
+      .communities { 
+        color: $slick-light-green;
+      }
+    
+      .partenrships { 
+        color: $slick-yellow;
+      }
+    
+      .connections { 
+        color: $slick-dark-purple;
+      }
+    }
+    .slick-main-image{
+      img {
+        width: 30em;
+      }
+    }
+  }
 
-.connections { 
-  color: $slick-dark-purple;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
+  footer {
+    display: flex;
+    justify-content: center;
+    font-size: 25pt;
+    font-weight: bold;
+    width: 100%;
+    background-color: $slick-dark-purple;
+    color: white;
+    height: 3em;
+  }
 }

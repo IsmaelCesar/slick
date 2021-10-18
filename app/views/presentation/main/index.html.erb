@@ -1,22 +1,29 @@
-<header>
-    <nav>
-        <div class='project-name-logo'>
-            <%= image_tag 'logos/logo-slick-upgrade.svg', width: 50 %>
-            <h1>Slick</h1>
+<div class="main-content">
+    <header>
+        <nav>
+            <div class='project-name-logo'>
+                <%= image_tag 'logos/logo-slick-upgrade.svg', width: 50 %>
+                <h1>Slick</h1>
+            </div>
+            <ul>
+                <li><%= link_to 'Login', presentation_user_login_path, class: 'btn btn-slick-success' %></li>
+                <li><%= link_to 'Sign up', presentation_user_sign_up_path, class: 'btn btn-slick-warning'%></li>
+            </ul>
+        </nav>
+        <p class="float-breaker"></p>
+    </header>
+    <section class="main-content">
+        <div class="slick-main-texts">
+            <h1>Build <span class="teams">Teams.</span></h1>
+            <h1>Build <span class="communities">Communities.</span></h1>
+            <h1>Build <span class="partenrships">Partnerships.</span></h1>
+            <h1>Build <span class="connections">Connections.</span></h1>
         </div>
-        <ul>
-            <li><%= link_to 'Login', presentation_user_login_path, class: 'btn btn-slick-success' %></li>
-            <li><%= link_to 'Sign up', presentation_user_sign_up_path, class: 'btn btn-slick-warning'%></li>
-        </ul>
-    </nav>
-    <p class="float-breaker"></p>
-</header>
-<section>
-    <h1>Build <span class="teams">Teams.</span></h1>
-    <h1>Build <span class="communities">Communities.</span></h1>
-    <h1>Build <span class="partenrships">Partnerships.</span></h1>
-    <h1>Build <span class="connections">Connections.</span></h1>
-</section>
-<footer>
-    &copy; Ismael Cesar
-</footer>
+        <div class="slick-main-image">
+            <%= image_tag 'undraw_Updates_re_o5af.svg' %>
+        </div>
+    </section>
+    <footer>
+        &copy; Ismael Cesar
+    </footer>
+</div>
