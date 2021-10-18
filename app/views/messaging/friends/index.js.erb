@@ -1,0 +1,7 @@
+<% friends_list  = j render partial: 'messaging/friends/partials/list', locals: { friends: friends }, layout: false%>
+(function (){
+  let messaging_chat_content = document.querySelector('.messaging-chat-content');
+  if(messaging_chat_content){
+    messaging_chat_content.innerHTML = '<%= friends_list %>';
+  }
+}).call(this);

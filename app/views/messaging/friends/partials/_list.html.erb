@@ -1,0 +1,26 @@
+<section class="friends-list-container">
+  <% friends.each do |friend| %>
+    <div class="friends-list-item">
+      <div class="friend-image">
+        <% if friend.user_image_url %>  
+          <%= image_tag friend.user_image_url , width: 50 %>
+        <% else %>
+          <i class="fas fa-user"></i>
+        <% end %>
+      </div>
+      <div class="friend-data">
+        <div class="friend-name">
+          <h4><%= friend.name %></h4>
+        </div>
+        <div class="friend-actions">
+          <%= link_to "#", class: 'btn btn-sm btn-outline-light' do %>
+            <i class="fas fa-comment"></i>
+          <% end %>
+          <%= link_to messaging_remove_friend_path(friend.id), class: 'btn btn-sm btn-outline-light', method: :delete, remote: true do %>
+            <i class="fas fa-times-circle"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>

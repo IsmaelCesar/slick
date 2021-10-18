@@ -1,0 +1,23 @@
+<section class="groups-container">
+  <div class="group-option-list">
+    <% @groups.each do |group| %>
+      <div class="group-item-container">
+        <div class="group-data">
+          <div class="group-image">
+            <% if group.group_image_url %>
+              <%= image_tag group.group_image_url, width: 50 %>
+            <% else %>
+              <i class="fas fa-image"></i>
+            <% end %>
+          </div>
+          <div class="group-name">
+            <%= group.name %>
+          </div>
+          <%= link_to messaging_join_group_path(group.id), class: 'btn btn-lg btn-outline-light' do %>
+            <i class="fas fa-sign-in-alt"></i>Join
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

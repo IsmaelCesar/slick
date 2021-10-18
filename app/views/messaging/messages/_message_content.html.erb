@@ -1,0 +1,20 @@
+<section class="messages-list-contaner">
+  <section class="messages-list-header">
+    <h3><%= resource_header %></h3>
+  </section>
+  <section class="messages-content-list" id="<%= messages_container_id %>">
+    <% messages.each do |message| %>
+      <%= render 'messaging/messages/message', message: message %>
+    <% end %>
+  </section>
+  <section class="messages-list-text-form">
+    <%= form_with method: :post, url: resource_url , id: 'form-message-content', html: { 'data-remote': true, class: "form-send-message-#{current_user.id}" }  do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :answered_message_id %>
+      <%= f.text_field :content, class: 'form-control', autocomplete: 'off' %>
+      <%= f.button class: 'btn', id: 'btn-send-message' do %>
+          <i class="fas fa-paper-plane"></i>
+      <% end %>
+    <% end %>
+  </section>
+</section>

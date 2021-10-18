@@ -1,0 +1,50 @@
+<section id="message-<%= message.message.id %>" class="message-content-container <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
+  <section class="message-content-actions <%= message.user.id == current_user.id ? 'user-message' : 'contact-message' %>">
+    <%= button_tag class: 'btn btn-sm btn-primary btn-answer-message', value: message.message.id do %>
+      <i class="fas fa-share"></i>
+    <% end %>
+    <%# Rendering action that creates threads %>
+    <% if message.class == TextChannelMessage%>
+      <%= link_to messaging_text_threads_path(text_channel_message_id: message.id), class: 'btn btn-sm btn-secondary', remote: true, method: :post do %>
+        >
+      <% end %>
+    <% end %>
+    <%= render_user_exclusive_actions message %>
+  </section>
+  <section class="message-content">
+    <% if message.answer %>
+      <section class="message-answer-preview">
+        <p><%= message.answer.content %></p>
+      </section>
+    <% end%>
+    <p class="message-text"> 
+      <%= message.content %>
+    </p>
+    <%# Rendering action that creates threads %>
+    <% if message.class == TextChannelMessage && message.text_thread %>
+      <div id="text-thread-actions-<%= message.text_thread.id %>">
+        <%= link_to messaging_text_thread_path(message.text_thread.id), class: 'btn btn-xs btn-secondary btn-access-thread', remote: true do %>
+          <%= hidden_field_tag :text_thread_id, message.text_thread.id %>
+          > <%= message.text_thread.label %>
+        <% end %>
+        <%= link_to messaging_text_thread_path(message.text_thread.id), class: 'btn btn-xs btn-secondary', remote: true, method: :delete do %>
+          <i class="fas fa-times-circle"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+  <section class="user-data"> 
+    <div class="user-image">
+      <% if message.user.user_image_url %>
+        <%= image_tag message.user.user_image_url, width: 20 %>
+      <% else %>
+        <div>
+          <i class="fas fa-user"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="user-name">
+      <%= message.user.name %>
+    </div>
+  </section>
+</section>

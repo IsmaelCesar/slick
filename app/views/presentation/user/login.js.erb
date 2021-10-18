@@ -1,0 +1,14 @@
+<% error_rendered =  j render inline: "<div class=\"alert alert-danger\" id=\"user-error-alert\"> 
+                                      #{@error_message}
+                                    </div>" %>
+( function () {
+  let fields_container = document.querySelector('.fields-container'); 
+  fields_container.innerHTML = '<%= error_rendered %>' + fields_container.innerHTML;
+  let btn_login = document.querySelector('#btn-login'); 
+  btn_login.disabled = false;
+  // setting timeout for alert
+  setTimeout( function () { 
+    let user_error_alert = document.querySelector('#user-error-alert');
+    user_error_alert.style.display = 'none'; 
+  }, 5000);
+} ).call(this);

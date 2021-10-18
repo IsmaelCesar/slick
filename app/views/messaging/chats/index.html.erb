@@ -1,0 +1,36 @@
+<section class="side-chat-menu">
+  <section id="user-actions">
+    <nav>
+      <ul>
+        <li>
+          <%= link_to messaging_list_pending_invites_path, remote: true do %>
+              <i class="fas fa-user-clock"></i> Pending invites
+          <% end %>
+        </li>
+        <li>
+          <%= link_to messaging_list_received_invites_path, remote: true do %>
+              <i class="fas fa-envelope-open-text"></i> Received invites
+          <% end %>
+        </li>
+        <li>
+          <%= link_to messaging_new_user_invite_path, id: 'link-add-friend', remote: true do %>
+              <i class="fas fa-user-plus"></i> Add friend
+          <% end %>
+        </li>
+        <li>
+          <%= link_to  messaging_friends_index_path, id: 'link-list-friends', remote: true do %>
+              <i class="fas fa-users"></i> My Friends
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </section>
+  <section class="listing-chats">
+    <%= render 'messaging/chats/list_chats', chats: @user.chats %>
+  </section>
+  <section id="modal-container">
+  </section>
+</section>
+<section class="messaging-chat-content">
+  <%= render 'messaging/friends/partials/list', friends: @friends%>
+</section>

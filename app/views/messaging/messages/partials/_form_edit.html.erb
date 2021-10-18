@@ -1,0 +1,9 @@
+<%= form_with id: 'form-edit-message', model: message, url: messaging_messages_update_path, method: :put, html: { 'data-remote': true } do |f| %>
+  <%= f.text_field :content, required: true, autocomplete: :off%>
+  <%= f.button class: 'btn btn-sm btn-success' do %>
+    <i class="fas fa-check-circle"></i>
+  <% end %>
+  <%= f.button class: 'btn btn-sm btn-danger btn-cancel-edit-message' do %>
+    <i class="fas fa-times-circle"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="modal fade modal-new-text-channel"  aria-labeledBy=".modal-new-text-channel" tab-index="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <%= form_with model: text_channel, url: infer_form_url_based_on_record(text_channel), method: text_channel.new_record? ? :post : :put, html: { 'data-remote': true } do |f| %>
+        <div class="modal-body">
+          <%= f.hidden_field :group_id %>
+          <%= f.text_field :name, placeholder: 'Type the name of the channel', required: true, class: 'form-control'%>
+        </div>
+        <div class="modal-footer">
+          <%= f.button type: 'reset', class: 'btn btn-danger', 'data-bs-dismiss': 'modal' do %>
+            <i class="fas fa-times"></i> Dismiss
+          <% end %>
+          <%= f.button class: 'btn btn-success btn-add-text-channel', 'data-bs-dismiss': 'modal' do %>
+            <i class="fas fa-plus"></i> <%= text_channel.new_record? ? 'Add' : 'Update' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

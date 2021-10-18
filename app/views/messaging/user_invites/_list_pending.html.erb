@@ -1,0 +1,24 @@
+<section class="invite-tables-container">  
+  <table class='table table-hover invites-table'>
+    <thead class='table-primary'>
+      <tr>
+        <th> Name </th>
+        <th> E-mail </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if !pending_invites.empty? %>
+        <% pending_invites.each do |invite|%>
+          <tr>
+            <td> <%= invite.invitee.name %> </td>
+            <td> <%= invite.invitee.email %> </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="2"> You have no pending invites </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

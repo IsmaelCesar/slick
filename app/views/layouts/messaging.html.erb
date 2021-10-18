@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <title> <%= current_user.name %>  </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="user_id" content="<%= current_user.id%>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>  
+    <%= render 'layouts/messaging_partials/side_menu'%>
+    <section id="messaging-content">
+      <%= yield %>
+    </section>
+  </body>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
+  <%= javascript_pack_tag 'messaging', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag params[:controller], 'data-tubolinks-track': 'reload' %>
+</html>

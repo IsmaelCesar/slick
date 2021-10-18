@@ -1,0 +1,50 @@
+<section class="group-content-container">
+  <aside class="group-side-menu">
+    <header>
+      <h3>
+        <%= @group.name %>
+        <% if @group.user_adm.id == @current_user.id %>
+          <%= button_tag class: 'btn btn-sm btn-outline-light btn-toggle-group-actions', 
+                         type: 'button' do %>
+            <i class="fas fa-cog"></i>
+          <% end %>
+        <% else %> 
+          <%= link_to messaging_leave_group_path(@group.id), class: 'btn btn-sm btn-outline-light', remote: true, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+          <% end %>
+        <% end %>
+      </h3>
+    </header>
+    <div class="text-channel-list">
+      <%= render 'messaging/text_channel/partials/list', group: @group, current_user: @current_user %>
+    </div>
+    <div id="modal-container">
+    </div>
+    <div id="modal-group-actions-container">
+      <div class="modal fade" id="group-actions" aria-labelledby="#group-actions" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 style="color: black;"><%= @group.name %></h3>
+            </div>
+            <div class="modal-body">
+              <div class="d-grid gap-2">
+                <%= link_to messaging_groups_edit_path(@group.id), class: 'btn btn-outline-danger' do %>
+                  <i class="fas fa-edit"></i> Edit group
+                <% end %>
+                <%= link_to messaging_group_invites_new_path(@group.id), remote: true, 'data-bs-dismiss': 'modal', class: 'btn btn-outline-success' do %>
+                  <i class="fas fa-share"></i> Invite user
+                <% end %>
+              </div>
+            </div>
+            <div class="modal-footer">
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <aside class="group-menu-selection-content">
+
+  </aside>
+</section>

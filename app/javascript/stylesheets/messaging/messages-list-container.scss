@@ -1,0 +1,157 @@
+// File dedicated for the styling of the messages list
+@import '../slick-generics.scss'; 
+
+
+.messages-list-contaner{
+  height: 100vh;
+  background-color: white;
+  position: relative;
+  
+  .messages-list-header{
+    background-color: $slick-dark-purple;
+    color: white;
+    height: 10%;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px #979797;
+    h3 { 
+      width: 95%; 
+      margin: auto;
+      padding-top: 10px; 
+    }
+  }
+
+  .messages-content-list{
+    height: 70%;
+    overflow: hidden;
+    overflow: scroll;
+
+    // Message content styling
+    .message-content-container{
+      display: flex;
+      justify-content: right;
+      width: 90%;
+      margin: 1.5em auto;
+      position: relative;
+      
+      .message-content-actions{
+        position: absolute;
+        top: -1em;
+        right: 8em;
+        display: none;
+        button {
+          margin: 0px 5px;
+        } 
+      
+      }
+
+      .message-content-actions.contact-message{
+        left: 8em;
+      }
+
+      .message-answer-preview{
+        background-color: #c0c0c0;
+        border-radius: 1em;
+      }
+
+      .message-content{
+        width: 25em;
+        height: 30%;
+        padding: 1em;
+        border: 1px solid $slick-main-color;
+        overflow-wrap: break-word;
+        //border-radius: 0px 30px 30px 30px;
+      }
+
+      .user-data{
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .user-data .user-image {
+        font-size: 2em;
+        width: fit-content;
+        margin: auto;
+      }
+
+      .user-data .user-name{
+        color: black;
+      }      
+
+    }
+    .message-content-container:hover{
+      .message-content-actions{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .message-content-container.user-message{
+      .message-content{
+        border-radius: 30px 0px 30px 30px;
+      }
+    }
+
+    .message-content-container.contact-message{
+      flex-direction: row-reverse;
+      justify-content: left;
+      .message-content{
+        border-radius: 0px 30px 30px 30px;
+      }
+    }
+
+    .message-content-container:hover.contact-message{
+      .message-content-actions{
+        flex-direction: row-reverse;
+        justify-content: left;
+      }
+    }
+
+  }
+
+  .answered-message{
+    background-color: #c0c0c0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10pt;
+    position: absolute;
+    width: 100%;
+    top: 75%;
+    p { 
+      width: 70%;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+  .messages-list-text-form{
+    background-color: white;
+    /*box-sizing: border-box;*/
+    height: 10%;
+    padding-top: 1.2em;
+    box-shadow: 0 -5px 5px #979797;
+
+    form {
+      display: flex;
+      justify-content: space-evenly;
+
+      #btn-send-message { 
+        border-radius: 100%;
+        font-size: 2em;
+        height: fit-content;
+        border: 1px solid $slick-main-color;
+      }
+
+      #btn-send-message:hover{
+        background-color: $slick-main-color;
+        color: white; 
+        border: 1px solid white;
+      }
+
+      input[type="text"]{ 
+        width: 85%;
+        border-radius: 30px 30px 30px 0px;
+        border: 1px solid $slick-main-color;
+      }
+    } 
+  }
+}

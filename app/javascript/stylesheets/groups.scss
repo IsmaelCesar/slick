@@ -1,0 +1,130 @@
+// FIle dedicated to the styling exclusive to slick 
+@import "slick-generics.scss";
+
+// Side menu options
+.groups-container { 
+  height: 100vh;
+  width: 100%;
+  background-color: $slick-dark-purple;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  #form-group{
+    width: 50%;
+    margin: 5em auto;
+    div { 
+      margin-top: 2em;
+    }
+  }
+
+  .group-option-list{ 
+    width: 75%;
+    margin: auto;
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 15em 15em 15em;
+    justify-content: center;
+    gap: 2em
+  }
+
+  .group-data{
+    width: 10em;
+    height: 10em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .group-image{
+      font-size: 5em;
+      text-align: center;
+    }
+
+    .group-name{
+      text-align: center;
+    }
+  } 
+
+  .group-form-container {
+    width: 70%;
+    margin: auto;
+    padding: 5em; 
+    
+    .group-form { 
+      div { 
+        margin-top: 1.5em;
+      }
+    }
+  }
+
+  .group-item-container{
+    border: 1px solid white; 
+    border-radius: 10px;
+    width: 12em; 
+    height: 12em;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+
+}
+
+.group-content-container { 
+  display: flex;
+  width: 100%;
+
+  .group-side-menu {
+    width: 20em;
+    height: 100vh; 
+    background-color: $slick-dark-purple;
+    color: white;
+    margin: 0;
+    padding: 0;
+   
+    header { 
+      font-size: 1em;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      width: fit-content;
+      margin: 10px auto;
+
+      li { 
+        margin:auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      a.text-channel-action{
+        font-size: 10pt;
+        display: inline-block;
+        display: none;
+      }
+
+
+      li:hover{
+        a.text-channel-action{
+          display: inline-block;
+        }
+      }
+
+      a.text-channel-button{
+        font-size: 0.8em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+      }
+    } 
+    
+  }
+
+  .group-menu-selection-content{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #c9c9c9;
+  }
+
+}

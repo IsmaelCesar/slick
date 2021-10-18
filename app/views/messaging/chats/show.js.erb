@@ -1,0 +1,11 @@
+<% message_list = j render partial: 'messaging/messages/message_content', locals: { messages: messages,
+                                                                                    resource_url: messaging_send_message_path(chat.id), 
+                                                                                    resource_header: chat_contact.name, 
+                                                                                    messages_container_id: messages_container_id }, layout: false %>
+( function (){ 
+    let messages_chat_content = document.querySelector('.messaging-chat-content');
+    if(messages_chat_content){ 
+      messages_chat_content.innerHTML = '<%= message_list %>'
+    } 
+  } 
+)()

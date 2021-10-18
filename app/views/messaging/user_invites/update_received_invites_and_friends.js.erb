@@ -1,0 +1,18 @@
+<% invites_list = j render partial: 'messaging/user_invites/list_received', locals: { received_invites: received_invites, group_invites: group_invites } %>
+<% list_chats = j render partial: 'messaging/chats/list_chats', locals: { chats: chats } %>
+(function (){
+  let messaging_chat_content = document.querySelector('.messaging-chat-content');
+  if(messaging_chat_content){
+    messaging_chat_content.innerHTML = '<%= invites_list %>';
+  }
+
+  let listing_chats  = document.querySelector('.listing-chats')
+  if(listing_chats){
+    listing_chats.innerHTML = '<%= list_chats %>'
+  }
+
+  <% if new_chat %>
+    init_subscription_for_resource(consumer, 'chat', '<%= new_chat.id %>');
+  <% end %>
+
+}).call(this);

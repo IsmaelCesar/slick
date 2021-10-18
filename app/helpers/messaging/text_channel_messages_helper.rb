@@ -1,0 +1,2 @@
+module Messaging::TextChannelMessagesHelper
+end

@@ -1,0 +1,7 @@
+<% list_text_channel = j render partial: 'messaging/text_channel/partials/list', locals: { group: group, current_user: current_user } , layouts: true %>
+(function (){
+  let list_text_channel = document.querySelector('.text-channel-list');
+  if(list_text_channel){
+    list_text_channel.innerHTML = '<%= list_text_channel %>'
+  }
+}).call(this);

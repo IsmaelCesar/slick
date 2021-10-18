@@ -1,0 +1,7 @@
+<% contact_list = j render partial: 'messaging/contacts/list_chats', locals: { chats: chats }%>
+(function (){
+  let contact_container = document.querySelector('.listing-chats')
+  if(contact_container){
+    contact_container.innerHTML = '<%= contact_list %>'
+  }
+})()

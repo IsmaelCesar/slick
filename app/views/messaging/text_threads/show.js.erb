@@ -1,0 +1,14 @@
+<% text_thread_messages = j render partial: 'messaging/messages/message_content', locals: {  messages: messages,
+                                                                                              current_user: current_user, 
+                                                                                              resource_header: resource_header,
+                                                                                              messages_container_id: messages_container_id,
+                                                                                              resource_url: resource_url
+                                                                                            }  %>
+(function (){
+  let group_menu_selection_content = document.querySelector('.group-menu-selection-content');
+  if(group_menu_selection_content){
+    group_menu_selection_content.innerHTML = '<%= text_thread_messages %>';    
+    consumer.text_thread?.unsubscribe();
+    consumer.text_thread = init_subscription_for_resource(consumer, 'text_thread', '<%= text_thread.id %>' );
+  }
+}).call(this)

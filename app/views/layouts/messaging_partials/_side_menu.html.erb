@@ -1,0 +1,40 @@
+<aside id="side-menu">
+  <section>
+    <!-- User's data section -->
+    <div id="user-avatar">
+      <i class="fas fa-user"></i>
+    </div>
+    <p class="user-name">
+      <%= current_user.name %>
+    </p>
+    <div class="user-options">
+      <%= link_to logout_path, method: :patch, title: 'Logout', 'data-toggle': 'tooltip' do %>
+        <i class="fas fa-power-off" style="color: white;"></i>
+      <% end %>
+
+      <%= link_to messaging_users_edit_path, title: 'Count configuration', 'data-toggle': 'tooltip'  do %>
+        <i class="fas fa-cog" style="color: white;"></i>
+      <% end %>
+    </div>
+  </section>
+  <section> 
+    <section class="messaging-group">
+      <%= link_to messaging_chats_index_path do %> 
+        <i class="fas fa-users"> </i> Contacts
+      <% end %>
+    </section>
+    <section class="group-options">
+      <%= render 'messaging/groups/partials/list_all_user_groups', all_user_groups: @user.all_user_groups%>
+    </section>
+    <section class="group-actions">
+
+      <%= link_to  messaging_groups_available_groups_path , class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+
+      <%= link_to messaging_groups_user_groups_path , class: 'btn btn-sm btn-outline-light', 'data-toggle': 'tooltip' do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </section>
+  </section>
+</aside>

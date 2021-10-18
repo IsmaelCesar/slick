@@ -1,0 +1,7 @@
+<% all_user_groups.each do |group| %>
+  <section class="messaging-group">
+    <%= link_to messaging_groups_show_path(group.id) do %> 
+      <i class="fas fa-users"> </i> <%= group.name %>
+    <% end %>
+  </section>
+<% end %>
