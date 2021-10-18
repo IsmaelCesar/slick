@@ -1,0 +1,11 @@
+development:
+  adapter: redis
+  url: <%= Figaro.env.redis_url %>
+
+test:
+  adapter: test
+
+production:
+  adapter: redis
+  url: <%= Figaro.env.redis_url %>
+  #channel_prefix: slick_production
