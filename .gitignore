@@ -37,7 +37,6 @@ config/database.yml
 config/application.yml
 config/secrets.yml
 config/credentials.yml*
-bin/*
 
 /public/packs
 /public/packs-test
