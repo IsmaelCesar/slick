@@ -1,5 +1,5 @@
 <section class="groups-container">
-  <%= form_with model: @group, url: messaging_groups_update_path(@group.id), method: :put do |f| %>
+  <%= form_with model: @group, url: messaging_groups_update_path(@group.id), method: :put, id: 'form-group' do |f| %>
     <%= render 'messaging/groups/partials/group_form_fields', form_builder: f %>
 
     <hr>

@@ -9,6 +9,14 @@
   overflow: hidden;
   overflow-y: scroll;
 
+  #form-group{
+    width: 50%;
+    margin: 5em auto;
+    div { 
+      margin-top: 2em;
+    }
+  }
+
   .group-option-list{ 
     width: 75%;
     margin: auto;
