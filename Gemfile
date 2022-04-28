@@ -67,5 +67,7 @@ gem 'figaro', '~> 1.2'
 
 # Extra dependencies
 gem "actionpack", ">= 6.1.5.1"
+gem "actionview", ">= 6.1.5.1"
+
 
 
