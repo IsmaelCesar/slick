@@ -63,3 +63,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gem for environment variables
 gem 'figaro', '~> 1.2'
+
+
+# Extra dependencies
+gem "actionpack", ">= 6.1.5.1"
+
+
