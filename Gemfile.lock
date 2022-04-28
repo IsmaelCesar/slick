@@ -255,6 +255,7 @@ DEPENDENCIES
   figaro (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  nokogiri (>= 1.13.4)
   passenger-rails (~> 0.0.2)
   pg (~> 1.2, >= 1.2.3)
   rack-mini-profiler (~> 2.0)
