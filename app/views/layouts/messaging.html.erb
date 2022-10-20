@@ -6,8 +6,8 @@
     <meta name="user_id" content="<%= current_user.id%>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_include_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>  
     <%= render 'layouts/messaging_partials/side_menu'%>
