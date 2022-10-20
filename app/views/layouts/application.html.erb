@@ -7,12 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>    
-    <%= stylesheet_pack_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>    
+    <%= stylesheet_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>    
+    <%= stylesheet_include_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>    
   </head>
   <body>
     <%= yield %>
   </body>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  <%= javascript_pack_tag params[:controller], defer: true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+  <%= javascript_include_tag params[:controller], defer: true %>
 </html>
