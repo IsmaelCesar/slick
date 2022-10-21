@@ -4,4 +4,4 @@
  * this file contains packs for the main page
  */
 
-  import 'stylesheets/presentation/main';
+  import '../../stylesheets/presentation/main';

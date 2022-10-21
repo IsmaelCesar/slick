@@ -6,5 +6,5 @@
  */
 
 import '../../presentation/user/login'
-import 'stylesheets/user/login'
-import 'stylesheets/user/sign_up'
+import '../../stylesheets/user/login'
+import '../../stylesheets/user/sign_up'
