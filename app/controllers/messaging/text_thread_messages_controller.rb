@@ -10,10 +10,11 @@ class Messaging::TextThreadMessagesController < Messaging::MessagingController
     @text_thread_message = TextThreadMessage.new(message: @message, text_thread: @text_thread)
     ActiveRecord::Base.transaction do
       if @message.save && @text_thread_message.save
-        ActionCable.server.broadcast "messaging/text_thread/#{@text_thread.id}",
-                                     message: render_message(@text_thread_message),
-                                     user_id: @user.id,
-                                     messages_container_id: "text-thread-#{@text_thread.id}"
+        ActionCable.server.broadcast "messaging/text_thread/#{@text_thread.id}",{
+                                        message: render_message(@text_thread_message),
+                                        user_id: @user.id,
+                                        messages_container_id: "text-thread-#{@text_thread.id}"
+                                     }
       end
     end
   end

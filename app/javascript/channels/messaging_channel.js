@@ -63,9 +63,11 @@ export default function init_subscription_for_resource(consumer, resource_name, 
       set_answered_message_value(null);
     },
     
-    clean_text_field_message_sent(user_id){ 
+    clean_text_field_message_sent(user_id){
       let text_field_send_message = document.querySelector(`.form-send-message-${user_id}`);
-      text_field_send_message.reset();
+      if(text_field_send_message){
+        text_field_send_message.reset();
+      }
     }
   });
 }
