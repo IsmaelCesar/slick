@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= stylesheet_link_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'messaging', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>  
     <%= render 'layouts/messaging_partials/side_menu'%>
@@ -16,6 +16,6 @@
     </section>
   </body>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
-  <%#= javascript_include_tag 'messaging', 'data-turbolinks-track': 'reload' %>
-  <%#= javascript_include_tag params[:controller], 'data-tubolinks-track': 'reload' %>
+  <%= javascript_include_tag 'messaging', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag params["controller"].split("/").join("_") , 'data-tubolinks-track': 'reload' %>
 </html>

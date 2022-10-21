@@ -17,14 +17,23 @@ module.exports = {
   entry: {
     application: [
       "./app/javascript/packs/application.js",
-    ], 
+    ],
+    presentation: [
+      "./app/javascript/packs/presentation/main.js",
+      "./app/javascript/packs/presentation/user.js",
+    ],
     messaging:[
       "./app/javascript/packs/messaging.js"
     ],
-    groups: [
-      "./app/javascript/messaging/groups/edit.js",
-      "./app/javascript/messaging/groups/show.js"
-    ]
+    messaging_users: [
+      "./app/javascript/packs/messaging/users.js",
+    ],
+    messaging_groups: [
+      "./app/javascript/packs/messaging/groups.js",
+    ],
+    messaging_chats: [
+      "./app/javascript/packs/messaging/chats.js",
+    ],
   },
   output: {
     filename: "[name].js",
