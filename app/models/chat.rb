@@ -1,4 +1,5 @@
 class Chat < ApplicationRecord
+  # this is an update
   include CustomValidations
   belongs_to :user
   belongs_to :contact, class_name: 'User'
