@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  # alteration 2
   belongs_to :user
   belongs_to :answered_message, class_name: 'Message', foreign_key: 'answered_message_id', optional: true
 
