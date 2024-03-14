@@ -1,4 +1,5 @@
 class Friend < ApplicationRecord
+  #this is an alteration 
   include CustomValidations
   include UserAttributes
   belongs_to :user
